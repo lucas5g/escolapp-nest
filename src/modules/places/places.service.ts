@@ -3,13 +3,16 @@ import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 
 @Injectable()
-export class PlaceService {
+export class PlacesService {
+
+  // constructor(private prisma:Prisma)
+
   create(createPlaceDto: CreatePlaceDto) {
-    return 'This action adds a new place';
+    return  'qweeq';
   }
 
   findAll() {
-    return `This action returns all place`;
+    return `This action returns all places`;
   }
 
   findOne(id: number) {
