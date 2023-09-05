@@ -3,13 +3,13 @@ import { CreateUnityDto } from './dto/create-unity.dto';
 import { UpdateUnityDto } from './dto/update-unity.dto';
 
 @Injectable()
-export class UnityService {
+export class UnitiesService {
   create(createUnityDto: CreateUnityDto) {
     return 'This action adds a new unity';
   }
 
   findAll() {
-    return `This action returns all unity`;
+    return `This action returns all unities`;
   }
 
   findOne(id: number) {

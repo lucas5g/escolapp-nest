@@ -1,34 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { UnityService } from './unity.service';
+import { UnitiesService } from './unities.service';
 import { CreateUnityDto } from './dto/create-unity.dto';
 import { UpdateUnityDto } from './dto/update-unity.dto';
 
-@Controller('unity')
-export class UnityController {
-  constructor(private readonly unityService: UnityService) {}
+@Controller('unities')
+export class UnitiesController {
+  constructor(private readonly unitiesService: UnitiesService) {}
 
   @Post()
   create(@Body() createUnityDto: CreateUnityDto) {
-    return this.unityService.create(createUnityDto);
+    return this.unitiesService.create(createUnityDto);
   }
 
   @Get()
   findAll() {
-    return this.unityService.findAll();
+    return this.unitiesService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.unityService.findOne(+id);
+    return this.unitiesService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUnityDto: UpdateUnityDto) {
-    return this.unityService.update(+id, updateUnityDto);
+    return this.unitiesService.update(+id, updateUnityDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.unityService.remove(+id);
+    return this.unitiesService.remove(+id);
   }
 }
