@@ -1,34 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PlacesService } from './places.service';
+import { PlaceService } from './place.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 
-@Controller('places')
-export class PlacesController {
-  constructor(private readonly placesService: PlacesService) {}
+@Controller('place')
+export class PlaceController {
+  constructor(private readonly placeService: PlaceService) {}
 
   @Post()
   create(@Body() createPlaceDto: CreatePlaceDto) {
-    return this.placesService.create(createPlaceDto);
+    return this.placeService.create(createPlaceDto);
   }
 
   @Get()
   findAll() {
-    return this.placesService.findAll();
+    return this.placeService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.placesService.findOne(+id);
+    return this.placeService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePlaceDto: UpdatePlaceDto) {
-    return this.placesService.update(+id, updatePlaceDto);
+    return this.placeService.update(+id, updatePlaceDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.placesService.remove(+id);
+    return this.placeService.remove(+id);
   }
 }

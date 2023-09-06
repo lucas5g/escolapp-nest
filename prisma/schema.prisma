@@ -16,10 +16,14 @@ model Place {
   unity_id Int?
 
   unity Unity? @relation(fields: [unity_id], references: [id])
+
+  @@map("places")
 }
 
 model Unity {
   id     Int     @id @default(autoincrement())
   name   String
   places Place[]
+
+  @@map("unities")
 }

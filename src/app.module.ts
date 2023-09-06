@@ -10,9 +10,11 @@ import { ModalityModule } from './modules/modality/modality.module';
 import { GroupModule } from './modules/group/group.module';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { UnitiesModule } from './modules/unities/unities.module';
+import { UnityModule } from './modules/unity/unity.module';
+import { PlaceModule } from './modules/place/place.module';
 
 @Module({
-  imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PlacesModule, PrismaModule, UnitiesModule],
+  imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PlacesModule, PrismaModule, UnitiesModule, PlaceModule],
   controllers: [AppController],
   providers: [AppService],
 })
