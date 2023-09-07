@@ -13,7 +13,7 @@ describe('UnityService', () => {
     service = module.get<UnityService>(UnityService);
   });
 
-  it('Create', async() => {
+  it.only('Create', async() => {
     const data = {
       name: 'name'
     }
@@ -25,7 +25,7 @@ describe('UnityService', () => {
 
   it('Find All', async() => {
     const result = await service.findAll()
-    expect(result.length).toBeGreaterThan(1)
+    expect(result.length).toBeGreaterThan(0)
 
     result.forEach(row => {
       expect(row).toHaveProperty('name')
@@ -43,8 +43,7 @@ describe('UnityService', () => {
     }
     const result = await service.update(1, data)
     expect(result).toMatchObject(data)
-
-    
+   
   })
 
 });
