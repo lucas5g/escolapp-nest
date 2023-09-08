@@ -1,26 +1,39 @@
 import { Injectable } from '@nestjs/common';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class ModalityService {
+  constructor(private prisma:PrismaService){
+
+  }
   create(createModalityDto: CreateModalityDto) {
-    return 'This action adds a new modality';
+    return this.prisma.modality.create({
+      data: createModalityDto
+    });
   }
 
   findAll() {
-    return `This action returns all modality`;
+    return this.prisma.modality.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} modality`;
+    return this.prisma.modality.findUniqueOrThrow({
+      where:{id}
+    });
   }
 
   update(id: number, updateModalityDto: UpdateModalityDto) {
-    return `This action updates a #${id} modality`;
+    return this.prisma.modality.update({
+      where:{id},
+      data:updateModalityDto
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} modality`;
+    return this.prisma.modality.delete({
+      where:{id}
+    });
   }
 }

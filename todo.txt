@@ -1,0 +1,6 @@
+- Integração googleSheets
+- Login jwt
+- Swegger 
+- Multer 
+- RabbitMq
+- Swc 

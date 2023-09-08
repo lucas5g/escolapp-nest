@@ -43,7 +43,6 @@ describe('UnityService', () => {
     }
     const result = await service.update(1, data)
     expect(result).toMatchObject(data)
-
     
   })
 

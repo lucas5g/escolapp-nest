@@ -1,1 +1,4 @@
-export class CreatePlaceDto {}
+export class CreatePlaceDto {
+  name: string
+  unity_id: number
+}

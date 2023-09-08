@@ -21,9 +21,21 @@ model Place {
 }
 
 model Unity {
-  id     Int     @id @default(autoincrement())
-  name   String
-  places Place[]
+  id   Int    @id @default(autoincrement())
+  name String
+
+  places   Place[]
+  modality Modality[]
 
   @@map("unities")
+}
+
+model Modality {
+  id   Int    @id @default(autoincrement())
+  name String
+  unity_id Int?
+
+  unity   Unity? @relation(fields: [unity_id], references: [id])
+  
+  @@map("modalities")
 }
