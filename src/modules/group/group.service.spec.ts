@@ -18,7 +18,7 @@ describe('GroupService', () => {
     expect(service).toBeDefined();
   });
 
-  it('Find One', () => {
+  it.only('Find One', () => {
     const result = service.findOne(1)
     console.log(result)
   })
