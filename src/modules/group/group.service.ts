@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
+import { googleSheets } from 'src/libs/google-sheets';
 
 @Injectable()
 export class GroupService {
@@ -9,7 +10,7 @@ export class GroupService {
   }
 
   findAll() {
-    return `This action returns all group`;
+    return googleSheets({range: 'contagem!G:H'});
   }
 
   findOne(id: number) {
