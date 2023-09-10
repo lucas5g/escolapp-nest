@@ -12,8 +12,8 @@ describe('GroupService', () => {
     service = module.get<GroupService>(GroupService);
   });
 
-  it('Find All', async () => {
-    const result = await service.findAll()
+  it.only('Find All', async () => {
+    const result = await service.findAll({unity:'contagem'})
     console.log(result)
     expect(service).toBeDefined();
   });

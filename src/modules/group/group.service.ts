@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
 import { googleSheets } from 'src/libs/google-sheets';
+import { FindGroupDto } from './dto/find-group.dto';
 
 @Injectable()
 export class GroupService {
@@ -9,7 +10,7 @@ export class GroupService {
     return 'This action adds a new group';
   }
 
-  findAll({unity}:{unity:string}) {
+  findAll({unity}: FindGroupDto) {
     return googleSheets({range: `${unity}!G:H`});
   }
 
