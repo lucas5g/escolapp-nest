@@ -1,3 +1,4 @@
+import { NotFoundException } from "@nestjs/common";
 import { google } from "googleapis";
 import { env } from "src/utils/env";
 
@@ -13,14 +14,19 @@ export async function googleSheets({range}:{range:string}){
 
   const { spreadsheets } = google.sheets({version: 'v4', auth})
 
-  const { data } = await spreadsheets.values.get({
-    spreadsheetId: env.spreadSheetId,
-    range
-  })
+  try{
 
-  const values = sheetsToArrayObjects(data.values)
-
-  return values
+    const { data } = await spreadsheets.values.get({
+      spreadsheetId: env.spreadSheetId,
+      range
+    })
+    
+    const values = sheetsToArrayObjects(data.values)
+    
+    return values
+  }catch(error){
+    throw new NotFoundException('Unidadade não registrada na planilha')
+  }
 }
 
 function sheetsToArrayObjects(data: any[][] | undefined | null) {

@@ -9,8 +9,8 @@ export class GroupService {
     return 'This action adds a new group';
   }
 
-  findAll() {
-    return googleSheets({range: 'contagem!G:H'});
+  findAll({unity}:{unity:string}) {
+    return googleSheets({range: `${unity}!G:H`});
   }
 
   findOne(id: number) {
