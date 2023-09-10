@@ -8,9 +8,9 @@ import { CACHE_MANAGER } from '@nestjs/cache-manager';
 export class UnityService {
 
   constructor(
-    private prisma:PrismaService,
-    @Inject(CACHE_MANAGER) private cache:Cache
-  ){}
+    private prisma: PrismaService,
+    // @Inject(CACHE_MANAGER) private cache: Cache
+  ) { }
 
   create(createUnityDto: CreateUnityDto) {
     return this.prisma.unity.create({
@@ -19,27 +19,25 @@ export class UnityService {
   }
 
   findAll() {
-    this.cache.
-    const test = this.cache.reset()
     return this.prisma.unity.findMany();
   }
 
   findOne(id: number) {
     return this.prisma.unity.findUniqueOrThrow({
-      where:{id}
+      where: { id }
     });
   }
 
   update(id: number, updateUnityDto: UpdateUnityDto) {
     return this.prisma.unity.update({
-      where:{id},
+      where: { id },
       data: updateUnityDto
     });
   }
 
   remove(id: number) {
     return this.prisma.unity.delete({
-      where:{id}
+      where: { id }
     });
   }
 }

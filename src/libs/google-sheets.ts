@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { NotFoundException } from "@nestjs/common";
 import { google } from "googleapis";
 import { env } from "src/utils/env";
@@ -21,7 +22,7 @@ export async function googleSheets({range}:{range:string}){
       range
     })
     
-    const values = sheetsToArrayObjects(data.values)
+    const values:any[] = sheetsToArrayObjects(data.values)
     
     return values
   }catch(error){

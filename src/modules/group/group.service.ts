@@ -10,8 +10,14 @@ export class GroupService {
     return 'This action adds a new group';
   }
 
-  findAll({unity}: FindGroupDto) {
-    return googleSheets({range: `${unity}!G:H`});
+  async findAll({unity}: FindGroupDto) {
+    const groups = await googleSheets({range: `${unity}!G:H`}) as {turma:string, quantidade: number}[];
+    return groups.map(group => {
+      return {
+        name: group.turma,
+        quantity: group.quantidade
+      }
+    })
   }
 
   findOne(id: number) {
