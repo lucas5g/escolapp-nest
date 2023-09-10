@@ -12,9 +12,14 @@ describe('GroupService', () => {
     service = module.get<GroupService>(GroupService);
   });
 
-  it.only('Find All', async () => {
+  it('Find All', async () => {
     const result = await service.findAll({unity:'contagem'})
     console.log(result)
     expect(service).toBeDefined();
   });
+
+  it('Find One', () => {
+    const result = service.findOne(1)
+    console.log(result)
+  })
 });

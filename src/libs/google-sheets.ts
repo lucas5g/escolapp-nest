@@ -25,7 +25,8 @@ export async function googleSheets({range}:{range:string}){
     
     return values
   }catch(error){
-    console.log(error)
+    console.log(env)
+    // console.log(error)
     throw new NotFoundException('Unidadade não registrada na planilha')
   }
 }
