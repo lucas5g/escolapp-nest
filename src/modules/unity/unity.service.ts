@@ -1,12 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateUnityDto } from './dto/create-unity.dto';
 import { UpdateUnityDto } from './dto/update-unity.dto';
 import { PrismaService } from '../prisma/prisma.service';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @Injectable()
 export class UnityService {
 
-  constructor(private prisma:PrismaService){}
+  constructor(
+    private prisma:PrismaService,
+    @Inject(CACHE_MANAGER) private cache:Cache
+  ){}
 
   create(createUnityDto: CreateUnityDto) {
     return this.prisma.unity.create({
@@ -15,6 +19,8 @@ export class UnityService {
   }
 
   findAll() {
+    this.cache.
+    const test = this.cache.reset()
     return this.prisma.unity.findMany();
   }
 

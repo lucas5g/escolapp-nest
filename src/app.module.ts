@@ -11,9 +11,10 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { UnityModule } from './modules/unity/unity.module';
 import { PlaceModule } from './modules/place/place.module';
 import { StudentModule } from './modules/student/student.module';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
-  imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule,PlaceModule, StudentModule],
+  imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule,PlaceModule, StudentModule, CacheModule.register()],
   controllers: [AppController],
   providers: [AppService],
 })

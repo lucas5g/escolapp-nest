@@ -13,6 +13,8 @@ export class PrismaExceptionFilter implements ExceptionFilter{
       })
     }
 
+    console.log(exception.message, exception.meta?.cause, exception.code)
+
     return response.status(500).json({
       message: 'Internal server error'
     })

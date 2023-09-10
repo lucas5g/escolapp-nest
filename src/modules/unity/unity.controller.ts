@@ -3,7 +3,7 @@ import { UnityService } from './unity.service';
 import { CreateUnityDto } from './dto/create-unity.dto';
 import { UpdateUnityDto } from './dto/update-unity.dto';
 
-@Controller('unity')
+@Controller('unities')
 export class UnityController {
   constructor(private readonly unityService: UnityService) {}
 
