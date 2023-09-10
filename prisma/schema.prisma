@@ -24,18 +24,30 @@ model Unity {
   id   Int    @id @default(autoincrement())
   name String
 
-  places   Place[]
-  modality Modality[]
+  places     Place[]
+  modalities Modality[]
+  users      User[]
 
   @@map("unities")
 }
 
 model Modality {
-  id   Int    @id @default(autoincrement())
-  name String
+  id       Int    @id @default(autoincrement())
+  name     String
   unity_id Int?
 
-  unity   Unity? @relation(fields: [unity_id], references: [id])
-  
+  unity Unity? @relation(fields: [unity_id], references: [id])
+
   @@map("modalities")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String
+  password String
+
+  unity   Unity? @relation(fields: [unity_id], references: [id])
+  unity_id Int?
+
+  @@map("users")
 }
