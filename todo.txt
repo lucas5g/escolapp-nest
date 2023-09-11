@@ -5,3 +5,6 @@
 - Swc 
 - test pipeline
 - deploy vercel
+- add database memomry - https://www.youtube.com/watch?v=hHM-hr9q4mo - 29
+- add database neon
+- assistir - https://www.youtube.com/watch?v=W37Va1q9l-I&t=6s
