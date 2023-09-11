@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
-import { googleSheets } from 'src/libs/google-sheets';
+import { googleSheets } from '../../libs/google-sheets';
 import { FindGroupDto } from './dto/find-group.dto';
 
 @Injectable()
