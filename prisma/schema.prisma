@@ -10,16 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Place {
-  id       Int    @id @default(autoincrement())
-  name     String
-  unity_id Int?
-
-  unity Unity? @relation(fields: [unity_id], references: [id])
-
-  @@map("places")
-}
-
 model Unity {
   id   Int    @id @default(autoincrement())
   name String
@@ -31,10 +21,22 @@ model Unity {
   @@map("unities")
 }
 
-model Modality {
+model Place {
   id       Int    @id @default(autoincrement())
   name     String
   unity_id Int?
+
+  unity Unity? @relation(fields: [unity_id], references: [id])
+
+  @@map("places")
+}
+
+model Modality {
+  id               Int    @id @default(autoincrement())
+  name             String
+  members_quantity Int
+  teams_quantity   Int
+  unity_id         Int?
 
   unity Unity? @relation(fields: [unity_id], references: [id])
 
@@ -46,7 +48,7 @@ model User {
   email    String
   password String
 
-  unity   Unity? @relation(fields: [unity_id], references: [id])
+  unity    Unity? @relation(fields: [unity_id], references: [id])
   unity_id Int?
 
   @@map("users")

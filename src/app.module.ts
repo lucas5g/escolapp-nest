@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
@@ -12,10 +12,22 @@ import { UnityModule } from './modules/unity/unity.module';
 import { PlaceModule } from './modules/place/place.module';
 import { StudentModule } from './modules/student/student.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ConfigurationModule } from './modules/configuration/configuration.module';
+import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.middleware';
 
 @Module({
-  imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule,PlaceModule, StudentModule, CacheModule.register()],
+  imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule, PlaceModule, StudentModule,
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 0
+    }),
+    ConfigurationModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { 
+  configure(consumer:MiddlewareConsumer){
+    consumer.apply(HttpMethodLoggerMiddleware).forRoutes('*')
+  }
+}

@@ -6,4 +6,10 @@ export class CreateModalityDto {
 
   @IsNotEmpty()
   unity_id: number
+
+  @IsNotEmpty()
+  members_quantity: number
+
+  @IsNotEmpty()
+  teams_quantity: number
 }

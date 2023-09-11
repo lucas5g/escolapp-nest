@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { googleSheets } from 'src/libs/google-sheets';
@@ -6,12 +6,14 @@ import { FindStudentDto } from './dto/find-student.dto';
 
 @Injectable()
 export class StudentService {
+
   create(createStudentDto: CreateStudentDto) {
     return 'This action adds a new student';
   }
 
-  async findAll({unity}:FindStudentDto) {
-    const students = await googleSheets({range: `${unity}!A:D`})  as {ra:string, nome:string, turma:string}[];
+  async findAll({ unity }: FindStudentDto) {
+
+    const students = await googleSheets({ range: `${unity}!A:D` }) as { ra: string, nome: string, turma: string }[]
     
     return students.map(student => {
       return {
@@ -20,7 +22,6 @@ export class StudentService {
         group: student.turma
       }
     })
-  
   }
 
 

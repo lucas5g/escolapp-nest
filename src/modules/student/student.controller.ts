@@ -1,9 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseInterceptors } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
+import { FindGroupDto } from '../group/dto/find-group.dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('students')
+@UseInterceptors(CacheInterceptor)
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
@@ -13,8 +16,8 @@ export class StudentController {
   }
 
   @Get()
-  findAll() {
-    return this.studentService.findAll();
+  findAll(@Query() findGroupDto:FindGroupDto) {
+    return this.studentService.findAll(findGroupDto);
   }
 
   @Get(':id')
