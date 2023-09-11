@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import { NotFoundException } from "@nestjs/common";
 import { google } from "googleapis";
-import { env } from "src/utils/env";
+import { env } from "../utils/env";
 
 export async function googleSheets({range}:{range:string}){
   const auth = new google.auth.GoogleAuth({
