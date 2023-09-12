@@ -15,6 +15,11 @@ export class UserService {
       data:{
         ...createUserDto,
         password: await hash(createUserDto.password, 12)
+      },
+      select:{
+        id:true,
+        email:true,
+        unity_id:true
       }
     });
   }
@@ -32,6 +37,8 @@ export class UserService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.prisma.user.delete({
+      where:{id}
+    });
   }
 }
