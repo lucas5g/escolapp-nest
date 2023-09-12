@@ -3,5 +3,5 @@ export function translate(message:string){
       'users_unity_id_fkey (index)': 'unity_id não registrado.'
     }
   
-    return messages[message] ?? 'Opção inválida.'
+    return messages[message] ?? message
   }

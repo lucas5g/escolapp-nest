@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode } from '@ne
 import { PlaceService } from './place.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Places')
 @Controller('places')
 export class PlaceController {
   constructor(private readonly placeService: PlaceService) {}

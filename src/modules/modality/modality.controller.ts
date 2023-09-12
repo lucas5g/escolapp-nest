@@ -3,7 +3,9 @@ import { ModalityService } from './modality.service';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Modalities')
 @Controller('modalities')
 @UseInterceptors(CacheInterceptor)
 export class ModalityController {

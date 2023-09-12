@@ -4,7 +4,9 @@ import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { FindGroupDto } from '../group/dto/find-group.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Students')
 @Controller('students')
 @UseInterceptors(CacheInterceptor)
 export class StudentController {

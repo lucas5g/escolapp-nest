@@ -21,7 +21,7 @@ import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.mid
       isGlobal: true,
       ttl: 0
     }),
-    ConfigurationModule
+    ConfigurationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

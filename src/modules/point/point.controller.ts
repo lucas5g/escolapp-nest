@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PointService } from './point.service';
 import { CreatePointDto } from './dto/create-point.dto';
 import { UpdatePointDto } from './dto/update-point.dto';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('point')
+@ApiTags('Points')
+@Controller('points')
 export class PointController {
   constructor(private readonly pointService: PointService) {}
 

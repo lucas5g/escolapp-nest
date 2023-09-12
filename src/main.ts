@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { PrismaExceptionFilter } from './exceptions-filter/prisma.exeption-filter';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,6 +14,22 @@ async function bootstrap() {
     errorHttpStatusCode: 422,
     whitelist:true
   }))
+
+
+  /**
+   * Swagger
+   */
+  const config = new DocumentBuilder()
+    .setTitle('Escolaap API')
+    .setDescription('The Api Escolaap')
+    .setVersion('0.1')
+    .addTag('0.1')
+    .build()
+
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document)
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
