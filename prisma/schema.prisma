@@ -45,7 +45,7 @@ model Modality {
 
 model User {
   id       Int    @id @default(autoincrement())
-  email    String
+  email    String @unique
   password String
 
   unity    Unity? @relation(fields: [unity_id], references: [id])

@@ -1,5 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { translate } from "src/utils/translate";
 
 @Catch(PrismaClientKnownRequestError)
 export class PrismaExceptionFilter implements ExceptionFilter{
@@ -13,10 +14,23 @@ export class PrismaExceptionFilter implements ExceptionFilter{
       })
     }
 
-    console.log(exception.message, exception.meta?.cause, exception.code)
+    if(exception.code === 'P2003'){
+      return response.status(422).json({
+        message: translate(String(exception.meta.field_name))
+      })
+    }
+
+    if(exception.code === 'P2002'){
+      return response.status(422).json({
+        messsage: `${exception.meta.target[0].toUpperCase()} já foi cadastrado.`
+      })
+    }
+
+    console.log(exception)
 
     return response.status(500).json({
       message: 'Internal server error'
     })
   }
 }
+

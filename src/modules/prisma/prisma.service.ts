@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 export class PrismaService extends PrismaClient implements OnModuleInit {
   constructor(){
     super({
-      log:['query']
+      // log:['query']
     })
   }
   async onModuleInit() {
