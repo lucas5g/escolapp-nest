@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { NotFoundException } from "@nestjs/common";
+import { InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { google } from "googleapis";
 import { env } from "../utils/env";
 
@@ -27,9 +27,13 @@ export async function googleSheets({range}:{range:string}){
     
     return values
   }catch(error){
-    // console.log(env)
-    console.log(error)
-    throw new NotFoundException('Unidadade não registrada na planilha')
+
+    if(error?.errors[0]?.message){
+      throw new NotFoundException('Unidadade não registrada na planilha ou intervalo de busca desconfigurado.')
+    }
+
+    throw new InternalServerErrorException('Erro na integração com a planilha')
+
   }
 }
 
