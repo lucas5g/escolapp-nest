@@ -1,9 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseInterceptors } from '@nestjs/common';
 import { GroupService } from './group.service';
-import { CreateGroupDto } from './dto/create-group.dto';
-import { UpdateGroupDto } from './dto/update-group.dto';
 import { FindGroupDto } from './dto/find-group.dto';
-import { ApiParam, ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Groups')
 @Controller('groups')

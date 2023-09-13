@@ -12,6 +12,7 @@ export class GroupService {
 
   async findAll({unity}: FindGroupDto) {
     const groups = await googleSheets({range: `${unity}!G:H`}) as {turma:string, quantidade: number}[];
+    console.log(groups.length)
     return groups.map(group => {
       return {
         name: group.turma,

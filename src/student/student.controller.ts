@@ -8,7 +8,6 @@ import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Students')
 @Controller('students')
-@UseInterceptors(CacheInterceptor)
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
