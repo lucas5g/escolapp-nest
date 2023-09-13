@@ -8,6 +8,7 @@ export class PrismaExceptionFilter implements ExceptionFilter{
     const ctx = host.switchToHttp()
     const response = ctx.getResponse()
 
+    console.log({ctx})
     if(exception.code === 'P2025'){
       return response.status(404).json({
         message: exception.meta?.cause ?? exception.message
