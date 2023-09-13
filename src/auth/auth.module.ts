@@ -12,7 +12,7 @@ import { AuthGuard } from './auth.guard';
     UserModule,
     JwtModule.register({
       secret: env.jwtSecret,
-      signOptions:{ expiresIn: '60s'}
+      signOptions:{ expiresIn: '7d'}
       
     })
   ],

@@ -15,6 +15,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigurationModule } from './configuration/configuration.module';
 import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.middleware';
 import { AuthModule } from './auth/auth.module';
+import { StudyModule } from './study/study.module';
 
 @Module({
   imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule, PlaceModule, StudentModule,
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
       ttl: 0
     }),
     ConfigurationModule,
+    StudyModule,
     AuthModule,
   ],
   controllers: [AppController],
