@@ -1,0 +1,13 @@
+name: Github Actions CICD
+
+on:
+    push:
+        branches: main
+
+jobs:
+    tests:
+        name: Tests 
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Ola povoo"
+
