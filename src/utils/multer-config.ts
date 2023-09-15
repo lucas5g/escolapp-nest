@@ -4,7 +4,8 @@ import crypto from 'node:crypto'
 
 export const multerConfig = {
   storage: diskStorage({
-    destination: './uploads',
+    //Tirei o destination pois será integrado ao supabase
+    // destination: './uploads',
     filename: (req, file, cb) => {
 
       const fileName = 
