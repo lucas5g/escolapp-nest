@@ -8,7 +8,7 @@ export class AppService {
   constructor(@Inject(CACHE_MANAGER) private cache:Cache){}
 
   home(): object {
-    return {api: 'Studies with nestjs'};
+    return {api: 'Studies with nestjs 14/06'};
   }
 
   async resetCache(){
