@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
-import { googleSheets } from 'src/libs/google-sheets';
 import { FindStudentDto } from './dto/find-student.dto';
+import { googleSheets } from 'src/utils/google-sheets';
 
 @Injectable()
 export class StudentService {

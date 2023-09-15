@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import { InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { google } from "googleapis";
-import { env } from "../utils/env";
+import { env } from "./env";
 
 export async function googleSheets({range}:{range:string}){
 

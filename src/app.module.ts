@@ -12,21 +12,18 @@ import { UnityModule } from './unity/unity.module';
 import { PlaceModule } from './place/place.module';
 import { StudentModule } from './student/student.module';
 import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
-import { ConfigurationModule } from './configuration/configuration.module';
 import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.middleware';
 import { AuthModule } from './auth/auth.module';
-import { StudyModule } from './study/study.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule, PlaceModule, StudentModule,
+    AuthModule,
     CacheModule.register({
       isGlobal: true,
       ttl: 0
     }),
-    ConfigurationModule,
-    StudyModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [
@@ -34,8 +31,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     {
       provide: APP_INTERCEPTOR,
       useClass: CacheInterceptor
-    }
-  
+    },  
   ],
 })
 export class AppModule { 
