@@ -90,6 +90,7 @@
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^src/(.*)$": "<rootDir>/$1"
-    }
+    },
+    "setFiles":["setup.js"]
   }
 }
