@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { PrismaExceptionFilter } from './exceptions-filter/prisma.exeption-filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { env } from './utils/env';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -36,7 +37,7 @@ async function bootstrap() {
   const appRMQ = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
     transport: Transport.RMQ,
     options:{
-      urls:['amqps://qzsovlyx:0GklkUG_TRIQXtiscBW18dRglG_ZxvfV@jackal.rmq.cloudamqp.com/qzsovlyx'],
+      urls:[env.rmq],
       queue: 'games_queue',
       queueOptions:{
         durable: false
