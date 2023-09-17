@@ -8,8 +8,11 @@ jobs:
     Tests:
         name: Tests 
         runs-on: ubuntu-latest
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         steps:
-            - run: echo "Ola povoo"
+            - run: npm run test
 
     Deploy:
         runs-on: ubuntu-latest 

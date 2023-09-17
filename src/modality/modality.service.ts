@@ -2,10 +2,8 @@ import { Injectable, UseInterceptors } from '@nestjs/common';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Injectable()
-@UseInterceptors(CacheInterceptor)
 export class ModalityService {
   constructor(private prisma:PrismaService){
 

@@ -3,10 +3,11 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { PrismaExceptionFilter } from './exceptions-filter/prisma.exeption-filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   app.useGlobalFilters(new PrismaExceptionFilter())
 
   app.useGlobalPipes(new ValidationPipe({
@@ -31,5 +32,18 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
   await app.listen(process.env.PORT ?? 3000);
+
+  const appRMQ = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+    transport: Transport.RMQ,
+    options:{
+      urls:['amqps://qzsovlyx:0GklkUG_TRIQXtiscBW18dRglG_ZxvfV@jackal.rmq.cloudamqp.com/qzsovlyx'],
+      queue: 'games_queue',
+      queueOptions:{
+        durable: false
+      }
+    }
+  })
+  
+  await appRMQ.listen()
 }
 bootstrap();

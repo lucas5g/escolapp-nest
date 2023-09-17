@@ -6,12 +6,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { env } from 'src/utils/env';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth.guard';
-
+import 'dotenv/config'
 @Module({
   imports:[
     UserModule,
     JwtModule.register({
-      secret: env.jwtSecret,
+      secret: env.jwtSecret ?? 'secret',
       signOptions:{ expiresIn: '7d'}
       
     })

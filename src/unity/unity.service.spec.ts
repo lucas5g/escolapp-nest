@@ -13,14 +13,14 @@ describe('UnityService', () => {
     service = module.get<UnityService>(UnityService);
   });
 
-  it.only('Create', async() => {
+  it('Create', async() => {
     const data = {
       name: 'name'
     }
     const result = await service.create(data)
     expect(result).toMatchObject(data)
 
-    service.remove(result.id)
+    await service.remove(result.id)
   });
 
   it('Find All', async() => {

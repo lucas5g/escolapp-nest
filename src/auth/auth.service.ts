@@ -3,6 +3,7 @@ import { LoginAuthDto } from './dto/login-auth.dto';
 import { UserService } from '../user/user.service';
 import * as brcypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt';
+import { env } from 'src/utils/env';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,7 @@ export class AuthService {
 
     delete user.password
 
-    const accessToken = await this.jwt.signAsync(user)
+    const accessToken = await this.jwt.signAsync(user, {secret: env.jwtSecret})
 
     return {accessToken}
   }

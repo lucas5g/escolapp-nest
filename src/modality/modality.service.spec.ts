@@ -26,7 +26,7 @@ describe('ModalityService', () => {
     expect(result).toMatchObject(data)
 
     service.remove(result.id)
-  });
+  }, 5000);
 
   it('Find All', async () => {
     const result = await service.findAll()
