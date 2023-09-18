@@ -17,6 +17,7 @@ model Unity {
   places     Place[]
   modalities Modality[]
   users      User[]
+  teams      Team[]
 
   @@map("unities")
 }
@@ -40,6 +41,8 @@ model Modality {
 
   unity Unity? @relation(fields: [unity_id], references: [id])
 
+  teams Team[]
+
   @@map("modalities")
 }
 
@@ -52,4 +55,24 @@ model User {
   unity_id Int?
 
   @@map("users")
+}
+
+enum Genre {
+  misto
+  mas
+  fem
+}
+
+model Team {
+  id          Int    @id @default(autoincrement())
+  name        String
+  group       String
+  genre       Genre
+  modality_id Int?
+  unity_id    Int?
+
+  modality Modality? @relation(fields: [modality_id], references: [id])
+  unity    Unity?    @relation(fields: [unity_id], references: [id])
+
+  @@map("teams")
 }
