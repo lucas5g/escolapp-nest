@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { PrismaExceptionFilter } from './exceptions-filter/prisma.exeption-filter';
+import { PrismaExceptionFilter } from './prisma/prisma-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { env } from './utils/env';
