@@ -28,7 +28,9 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^10.2.5",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-socket.io": "^10.2.5",
     "@nestjs/swagger": "^7.1.11",
+    "@nestjs/websockets": "^10.2.5",
     "@prisma/client": "^5.3.1",
     "amqp-connection-manager": "^4.1.14",
     "amqplib": "^0.10.3",
@@ -40,6 +42,7 @@
     "googleapis": "^126.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
+    "socket.io": "^4.7.2",
     "update": "^0.7.4"
   },
   "devDependencies": {

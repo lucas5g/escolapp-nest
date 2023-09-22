@@ -16,6 +16,7 @@ import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.mid
 import { AuthModule } from './auth/auth.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ChatGateway } from './chat/chat.gateway';
 
 @Module({
   imports: [GroupModule, ModalityModule, TeamModule, GameModule, PointModule, UserModule, UnityModule, PrismaModule, PlaceModule, StudentModule,
@@ -42,7 +43,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     {
       provide: APP_INTERCEPTOR,
       useClass: CacheInterceptor
-    },  
+    },
+    ChatGateway,  
   ],
 })
 export class AppModule { 
