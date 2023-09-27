@@ -15,13 +15,13 @@ describe('AuthService', () => {
     service = module.get<AuthService>(AuthService);
   });
 
-  it('login', async() => {
+  it('login', async () => {
     const data = {
       email: 'test@mail.com',
-      password: 'qweqwe'
-    }
+      password: 'qweqwe',
+    };
 
-    const result = await service.login(data)
-    expect(result).toHaveProperty('accessToken')
+    const result = await service.login(data);
+    expect(result).toHaveProperty('accessToken');
   }, 5000);
 });

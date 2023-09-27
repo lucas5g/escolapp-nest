@@ -12,13 +12,13 @@ describe('StudentService', () => {
     service = module.get<StudentService>(StudentService);
   });
 
-  it('Find All', async() => {
-    const result = await service.findAll({unity:'contagem'})
-    expect(result.length).toBeGreaterThan(0)
-    result.forEach(row => {
-      expect(row).toHaveProperty('ra')
-      expect(row).toHaveProperty('name')
-      expect(row).toHaveProperty('group')
-    })
+  it('Find All', async () => {
+    const result = await service.findAll({ unity: 'contagem' });
+    expect(result.length).toBeGreaterThan(0);
+    result.forEach((row) => {
+      expect(row).toHaveProperty('ra');
+      expect(row).toHaveProperty('name');
+      expect(row).toHaveProperty('group');
+    });
   });
 });

@@ -1,3 +1,3 @@
 export class FindTeamDto {
-  unity_id: number
+  unity_id: number;
 }

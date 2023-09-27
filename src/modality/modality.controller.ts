@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  UseInterceptors,
+} from '@nestjs/common';
 import { ModalityService } from './modality.service';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
@@ -27,7 +37,10 @@ export class ModalityController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateModalityDto: UpdateModalityDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateModalityDto: UpdateModalityDto,
+  ) {
     return this.modalityService.update(+id, updateModalityDto);
   }
 

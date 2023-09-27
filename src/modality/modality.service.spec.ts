@@ -20,43 +20,39 @@ describe('ModalityService', () => {
       unity_id: 1,
       members_quantity: 10,
       teams_quantity: 20,
-    } as Modality
+    } as Modality;
 
-    const result = await service.create(data)
-    expect(result).toMatchObject(data)
+    const result = await service.create(data);
+    expect(result).toMatchObject(data);
 
-    service.remove(result.id)
+    service.remove(result.id);
   }, 5000);
 
   it('Find All', async () => {
-    const result = await service.findAll()
-    expect(result.length).toBeGreaterThan(1)
+    const result = await service.findAll();
+    expect(result.length).toBeGreaterThan(1);
 
-    result.forEach(row => {
-      expect(row).toHaveProperty('name')
-      expect(row).toHaveProperty('unity_id')
-      expect(row).toHaveProperty('members_quantity')
-      expect(row).toHaveProperty('teams_quantity')
-
-    })
-  })
+    result.forEach((row) => {
+      expect(row).toHaveProperty('name');
+      expect(row).toHaveProperty('unity_id');
+      expect(row).toHaveProperty('members_quantity');
+      expect(row).toHaveProperty('teams_quantity');
+    });
+  });
 
   it('Find One', async () => {
-    const result = await service.findOne(1)
-    expect(result).toHaveProperty('name')
-    expect(result).toHaveProperty('unity_id')
-    expect(result).toHaveProperty('members_quantity')
-    expect(result).toHaveProperty('teams_quantity')
-  })
+    const result = await service.findOne(1);
+    expect(result).toHaveProperty('name');
+    expect(result).toHaveProperty('unity_id');
+    expect(result).toHaveProperty('members_quantity');
+    expect(result).toHaveProperty('teams_quantity');
+  });
 
   it('Update', async () => {
     const data = {
-      name: `name ${new Date().getMinutes()}`
-    }
-    const result = await service.update(1, data)
-    expect(result).toMatchObject(data)
-
-  })
-
-
+      name: `name ${new Date().getMinutes()}`,
+    };
+    const result = await service.update(1, data);
+    expect(result).toMatchObject(data);
+  });
 });

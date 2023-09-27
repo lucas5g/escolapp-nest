@@ -1,9 +1,8 @@
-import { ApiParam, ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 
-export class FindGroupDto{
-
+export class FindGroupDto {
   @ApiProperty()
   @IsNotEmpty()
-  unity:string
+  unity: string;
 }

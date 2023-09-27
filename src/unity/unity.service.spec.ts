@@ -13,37 +13,35 @@ describe('UnityService', () => {
     service = module.get<UnityService>(UnityService);
   });
 
-  it('Create', async() => {
+  it('Create', async () => {
     const data = {
-      name: 'name'
-    }
-    const result = await service.create(data)
-    expect(result).toMatchObject(data)
+      name: 'name',
+    };
+    const result = await service.create(data);
+    expect(result).toMatchObject(data);
 
-    await service.remove(result.id)
+    await service.remove(result.id);
   });
 
-  it('Find All', async() => {
-    const result = await service.findAll()
-    expect(result.length).toBeGreaterThan(0)
+  it('Find All', async () => {
+    const result = await service.findAll();
+    expect(result.length).toBeGreaterThan(0);
 
-    result.forEach(row => {
-      expect(row).toHaveProperty('name')
-    })
-  })
+    result.forEach((row) => {
+      expect(row).toHaveProperty('name');
+    });
+  });
 
-  it('Find One', async() => {
-    const result = await service.findOne(1)
-    expect(result).toHaveProperty('name')
-  })
+  it('Find One', async () => {
+    const result = await service.findOne(1);
+    expect(result).toHaveProperty('name');
+  });
 
-  it('Update', async() => {
+  it('Update', async () => {
     const data = {
-      name: `name ${new Date().getMinutes()}`
-    }
-    const result = await service.update(1, data)
-    expect(result).toMatchObject(data)
-    
-  })
-
+      name: `name ${new Date().getMinutes()}`,
+    };
+    const result = await service.update(1, data);
+    expect(result).toMatchObject(data);
+  });
 });

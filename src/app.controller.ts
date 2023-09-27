@@ -1,4 +1,10 @@
-import { Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { Public } from './auth/public.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -16,30 +22,28 @@ export class AppController {
   }
 
   @Get('reset-cache')
-  resetCache(){
-    return this.appService.resetCache()
+  resetCache() {
+    return this.appService.resetCache();
   }
 
   @Post('upload')
-  @UseInterceptors(
-    FileInterceptor('file', multerConfig)
-  )
-  uploadFile(@UploadedFile(validation) file: Express.Multer.File){
-    return this.appService.uploadFile(file)
+  @UseInterceptors(FileInterceptor('file', multerConfig))
+  uploadFile(@UploadedFile(validation) file: Express.Multer.File) {
+    return this.appService.uploadFile(file);
   }
 
-  @MessagePattern({cmd: 'greeting'})
-  getGreetingMessage(name: string){
-    return `Hello ${name}`
+  @MessagePattern({ cmd: 'greeting' })
+  getGreetingMessage(name: string) {
+    return `Hello ${name}`;
   }
 
-  @MessagePattern({cmd: 'greeting-async'})
-  async getGreetingMessageAsync(name: string){
-    return `Hello ${name} Async`
+  @MessagePattern({ cmd: 'greeting-async' })
+  async getGreetingMessageAsync(name: string) {
+    return `Hello ${name} Async`;
   }
 
   @EventPattern('book-created')
-  async handleBookCreatedEvent(data: Record<string, unknown>){
-    console.log(data)
+  async handleBookCreatedEvent(data: Record<string, unknown>) {
+    console.log(data);
   }
 }

@@ -1,10 +1,9 @@
-import { IsNotEmpty } from "class-validator"
+import { IsNotEmpty } from 'class-validator';
 
 export class CreatePlaceDto {
-  
   @IsNotEmpty()
-  name: string 
+  name: string;
 
   @IsNotEmpty()
-  unity_id: number 
+  unity_id: number;
 }

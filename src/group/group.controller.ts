@@ -1,8 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { FindGroupDto } from './dto/find-group.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Groups')
 @Controller('groups')
@@ -15,7 +14,7 @@ export class GroupController {
   // }
 
   @Get()
-  findAll(@Query() findGroupDto:FindGroupDto ) {
+  findAll(@Query() findGroupDto: FindGroupDto) {
     return this.groupService.findAll(findGroupDto);
   }
 

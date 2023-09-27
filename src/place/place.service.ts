@@ -5,10 +5,10 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class PlaceService {
-  constructor(private prisma:PrismaService){}
+  constructor(private prisma: PrismaService) {}
   create(createPlaceDto: CreatePlaceDto) {
     return this.prisma.place.create({
-      data: createPlaceDto
+      data: createPlaceDto,
     });
   }
 
@@ -18,20 +18,20 @@ export class PlaceService {
 
   findOne(id: number) {
     return this.prisma.place.findUniqueOrThrow({
-      where:{id}
+      where: { id },
     });
   }
 
   update(id: number, updatePlaceDto: UpdatePlaceDto) {
     return this.prisma.place.update({
-      where: {id},
-      data:updatePlaceDto
+      where: { id },
+      data: updatePlaceDto,
     });
   }
 
   remove(id: number) {
     return this.prisma.place.delete({
-      where:{id}
+      where: { id },
     });
   }
 }

@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GroupService } from './group.service';
-import 'dotenv/config'
+import 'dotenv/config';
 
 describe('GroupService', () => {
   let service: GroupService;
@@ -14,13 +14,11 @@ describe('GroupService', () => {
   });
 
   it('Find All', async () => {
-    const result = await service.findAll({unity:'contagem'})
-    expect(result.length).toBeGreaterThan(0)
-    result.forEach(row => {
-      expect(row).toHaveProperty('name')
-      expect(row).toHaveProperty('quantity')
-    })
-
+    const result = await service.findAll({ unity: 'contagem' });
+    expect(result.length).toBeGreaterThan(0);
+    result.forEach((row) => {
+      expect(row).toHaveProperty('name');
+      expect(row).toHaveProperty('quantity');
+    });
   });
-
 });
