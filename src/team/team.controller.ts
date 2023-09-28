@@ -29,18 +29,18 @@ export class TeamController {
     return this.teamService.findAll(findTeamDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.teamService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.teamService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
-    return this.teamService.update(+id, updateTeamDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
+  //   return this.teamService.update(+id, updateTeamDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.teamService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.teamService.remove(+id);
+  // }
 }
