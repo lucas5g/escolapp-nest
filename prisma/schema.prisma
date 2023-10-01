@@ -71,8 +71,19 @@ model Team {
   modality_id Int?
   unity_id    Int?
 
-  modality Modality? @relation(fields: [modality_id], references: [id])
-  unity    Unity?    @relation(fields: [unity_id], references: [id])
+  modality Modality?     @relation(fields: [modality_id], references: [id])
+  unity    Unity?        @relation(fields: [unity_id], references: [id])
+  students TeamStudent[]
 
   @@map("teams")
+}
+
+model TeamStudent {
+  id         Int    @id @default(autoincrement())
+  team_id    Int
+  student_ra String
+
+  teams Team @relation(fields: [team_id], references: [id])
+
+  @@map("teams_students")
 }

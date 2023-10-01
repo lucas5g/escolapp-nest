@@ -6,11 +6,20 @@ import { FindTeamDto } from './dto/find-team.dto';
 
 @Injectable()
 export class TeamService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   create(createTeamDto: CreateTeamDto) {
+
+    const { students } = createTeamDto
+    delete createTeamDto.students
+
     return this.prisma.team.create({
-      data: createTeamDto,
+      data: {
+        ...createTeamDto,
+        students: {
+          create: students.map(student => ({ student_ra: student }))
+        }
+      },
     });
   }
 
@@ -28,7 +37,16 @@ export class TeamService {
   //   return `This action updates a #${id} team`;
   // }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} team`;
-  // }
+  async remove(id: number) {
+
+    await this.prisma.teamStudent.deleteMany({
+      where: {
+        team_id: id
+      }
+    })
+
+    return this.prisma.team.delete({      
+      where: {id},
+    });
+  }
 }

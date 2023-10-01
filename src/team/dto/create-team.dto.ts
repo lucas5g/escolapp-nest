@@ -9,4 +9,6 @@ export class CreateTeamDto {
   genre: 'misto' | 'mas' | 'fem';
   modality_id: number;
   unity_id: number;
+
+  students: string[]
 }
