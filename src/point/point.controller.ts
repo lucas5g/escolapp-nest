@@ -1,15 +1,5 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Param, Delete } from '@nestjs/common';
 import { PointService } from './point.service';
-import { CreatePointDto } from './dto/create-point.dto';
-import { UpdatePointDto } from './dto/update-point.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Points')
@@ -21,7 +11,6 @@ export class PointController {
   // create(@Body() createPointDto: CreatePointDto) {
   //   return this.pointService.create(createPointDto);
   // }
-
   @Get()
   findAll() {
     return this.pointService.findAll();

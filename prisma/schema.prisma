@@ -70,10 +70,12 @@ model Team {
   genre       Genre
   modality_id Int?
   unity_id    Int?
+  students    Json
 
-  modality Modality?     @relation(fields: [modality_id], references: [id])
-  unity    Unity?        @relation(fields: [unity_id], references: [id])
-  students TeamStudent[]
+  modality    Modality?     @relation(fields: [modality_id], references: [id])
+  unity       Unity?        @relation(fields: [unity_id], references: [id])
+  // students TeamStudent[]
+  TeamStudent TeamStudent[]
 
   @@map("teams")
 }

@@ -1,4 +1,5 @@
-import { IsNotEmpty } from 'class-validator';
+import { Genre } from '@prisma/client';
+import { IsArray, IsEnum, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateTeamDto {
   @IsNotEmpty()
@@ -6,9 +7,16 @@ export class CreateTeamDto {
 
   @IsNotEmpty()
   group: string;
-  genre: 'misto' | 'mas' | 'fem';
+
+  @IsEnum(Genre)
+  genre: Genre;
+
+  @IsNumber()
   modality_id: number;
+
+  @IsNumber()
   unity_id: number;
 
-  students: string[]
+  @IsArray()
+  students: string[];
 }
