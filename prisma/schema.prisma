@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -75,17 +75,8 @@ model Team {
   modality    Modality?     @relation(fields: [modality_id], references: [id])
   unity       Unity?        @relation(fields: [unity_id], references: [id])
   // students TeamStudent[]
-  TeamStudent TeamStudent[]
+  // TeamStudent TeamStudent[]
 
   @@map("teams")
 }
 
-model TeamStudent {
-  id         Int    @id @default(autoincrement())
-  team_id    Int
-  student_ra String
-
-  teams Team @relation(fields: [team_id], references: [id])
-
-  @@map("teams_students")
-}
