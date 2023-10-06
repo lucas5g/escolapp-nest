@@ -23,3 +23,11 @@ export const users = [
     unity_id: 1
   }
 ]
+
+export const places = [
+  {
+    id: 1,
+    name: 'place-test',
+    unity_id: 1
+  }
+]

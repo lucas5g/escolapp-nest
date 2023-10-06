@@ -18,7 +18,7 @@ describe('TeamService', () => {
     service = module.get<TeamService>(TeamService);
   });
 
-  it.only('Create', async () => {
+  it('Create', async () => {
     const data = {
       name: 'team-test',
       modality_id: 1,
@@ -32,8 +32,8 @@ describe('TeamService', () => {
 
     expect(result).toMatchObject(data);
 
-    // await service.remove(result.id);
-  }, 8000);
+    await service.remove(result.id);
+  });
 
   it('Find All', async () => {
     const result = await service.findAll({ unity_id: 1 });

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { modalities, unities, users } from "./data";
+import { modalities, places, unities, users } from "./data";
 import { setTimeout } from "timers/promises";
 import { hash } from "bcrypt";
 
@@ -31,6 +31,14 @@ async function main() {
       where:{ id: user.id},
       create: user,
       update: user
+    })
+  })
+
+  places.forEach(async place => {
+    await prisma.place.upsert({
+      where: {id: place.id},
+      create: place,
+      update: place
     })
   })
 }
