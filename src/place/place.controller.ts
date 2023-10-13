@@ -7,7 +7,7 @@ import {
   Param,
   Delete,
   HttpCode,
-  Req,
+  
 } from '@nestjs/common';
 import { PlaceService } from './place.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
@@ -20,8 +20,7 @@ export class PlaceController {
   constructor(private readonly placeService: PlaceService) {}
 
   @Post()
-  create(@Body() createPlaceDto: CreatePlaceDto, @Req() req:any) {
-    console.log(req.user)
+  create(@Body() createPlaceDto: CreatePlaceDto) {
     return this.placeService.create(createPlaceDto);
   }
 

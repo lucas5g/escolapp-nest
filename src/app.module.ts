@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
@@ -46,5 +46,7 @@ import { ChatGateway } from './chat/chat.gateway';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(HttpMethodLoggerMiddleware).forRoutes('*');
+
   }
+
 }
