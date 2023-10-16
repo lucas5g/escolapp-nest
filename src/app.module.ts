@@ -15,6 +15,7 @@ import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.mid
 import { AuthModule } from './auth/auth.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ChatGateway } from './chat/chat.gateway';
+import { GameModule } from './game/game.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { ChatGateway } from './chat/chat.gateway';
       isGlobal: true,
       ttl: 0,
     }),
+    GameModule,
   ],
   controllers: [AppController],
   providers: [

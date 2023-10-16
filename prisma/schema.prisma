@@ -28,6 +28,7 @@ model Place {
   unity_id Int?
 
   unity Unity? @relation(fields: [unity_id], references: [id])
+  games Game[]
 
   @@map("places")
 }
@@ -40,7 +41,7 @@ model Modality {
   unity_id         Int?
 
   unity Unity? @relation(fields: [unity_id], references: [id])
-
+  games Game[]
   teams Team[]
 
   @@map("modalities")
@@ -53,6 +54,8 @@ model User {
 
   unity    Unity? @relation(fields: [unity_id], references: [id])
   unity_id Int?
+
+  games Game[]
 
   @@map("users")
 }
@@ -72,11 +75,28 @@ model Team {
   unity_id    Int?
   students    Json
 
-  modality    Modality?     @relation(fields: [modality_id], references: [id])
-  unity       Unity?        @relation(fields: [unity_id], references: [id])
-  // students TeamStudent[]
-  // TeamStudent TeamStudent[]
+  modality Modality? @relation(fields: [modality_id], references: [id])
+  unity    Unity?    @relation(fields: [unity_id], references: [id])
 
   @@map("teams")
 }
 
+model Game {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  startHours  String
+  endHours    String
+  comments    String?
+  teams       Json
+  place_id    Int?
+  modality_id Int?
+  user_id     Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  Place    Place?    @relation(fields: [place_id], references: [id])
+  Modality Modality? @relation(fields: [modality_id], references: [id])
+  User     User?     @relation(fields: [user_id], references: [id])
+
+  @@map("games")
+}
