@@ -14,7 +14,6 @@ import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
 import { HttpMethodLoggerMiddleware } from './middlewares/http-method-logger.middleware';
 import { AuthModule } from './auth/auth.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { ChatGateway } from './chat/chat.gateway';
 import { GameModule } from './game/game.module';
 
 @Module({
@@ -42,7 +41,6 @@ import { GameModule } from './game/game.module';
       provide: APP_INTERCEPTOR,
       useClass: CacheInterceptor,
     },
-    ChatGateway,
   ],
 })
 export class AppModule {

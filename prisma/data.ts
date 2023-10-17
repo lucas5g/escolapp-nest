@@ -31,3 +31,22 @@ export const places = [
     unity_id: 1
   }
 ]
+
+export const teams = [
+  {
+    "name":"team test 1",
+    "group":"group-test",
+    "genre":"misto",
+    "modality_id":1,
+    "unity_id": 1,
+    "students":["C123123","C321321"]
+  },
+  {
+    "name":"team test 2",
+    "group":"group-test",
+    "genre":"misto",
+    "modality_id":1,
+    "unity_id": 1,
+    "students":["C123123","C321321"]
+  }
+]
