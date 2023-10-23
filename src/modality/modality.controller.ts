@@ -8,12 +8,14 @@ import {
   Delete,
   HttpCode,
   UseInterceptors,
+  Query,
 } from '@nestjs/common';
 import { ModalityService } from './modality.service';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { ApiTags } from '@nestjs/swagger';
+import { FindModalityDto } from './dto/find-modality.dto';
 
 @ApiTags('Modalities')
 @Controller('modalities')
@@ -27,8 +29,8 @@ export class ModalityController {
   }
 
   @Get()
-  findAll() {
-    return this.modalityService.findAll();
+  findAll(@Query() findModalityDto:FindModalityDto ) {
+    return this.modalityService.findAll(findModalityDto);
   }
 
   @Get(':id')

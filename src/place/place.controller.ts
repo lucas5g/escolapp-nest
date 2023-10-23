@@ -7,12 +7,14 @@ import {
   Param,
   Delete,
   HttpCode,
+  Query,
   
 } from '@nestjs/common';
 import { PlaceService } from './place.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { FindPlaceDto } from './dto/find-place.dto';
 
 @ApiTags('Places')
 @Controller('places')
@@ -25,8 +27,8 @@ export class PlaceController {
   }
 
   @Get()
-  findAll() {
-    return this.placeService.findAll();
+  findAll(@Query() findPlaceDto: FindPlaceDto) {
+    return this.placeService.findAll(findPlaceDto);
   }
 
   @Get(':id')
