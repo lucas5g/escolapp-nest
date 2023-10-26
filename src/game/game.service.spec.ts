@@ -32,7 +32,7 @@ describe('GameService', () => {
 
   });
 
-  it.only('Find All', async() => {
+  it('Find All', async() => {
     const result = await service.findAll()
     result.forEach(row => {
       expect(row).toHaveProperty('date')
