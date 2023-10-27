@@ -1,3 +1,5 @@
+import { Team } from "@prisma/client"
+
 export const unities = [
   {
     id: 1,
@@ -32,8 +34,9 @@ export const places = [
   }
 ]
 
-export const teams = [
+export const teams:Team[] = [
   {
+    id:1,
     "name":"team test 1",
     "group":"group-test",
     "genre":"misto",
@@ -42,6 +45,7 @@ export const teams = [
     "students":["C123123","C321321"]
   },
   {
+    id: 2,
     "name":"team test 2",
     "group":"group-test",
     "genre":"misto",

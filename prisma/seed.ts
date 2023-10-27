@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { modalities, places, unities, users } from "./data";
+import { modalities, places, teams, unities, users } from "./data";
 import { setTimeout } from "timers/promises";
 import { hash } from "bcrypt";
 
@@ -7,9 +7,17 @@ const prisma = new PrismaClient()
 
 async function main() {
 
-  unities.forEach(async unity => {
-    await prisma.unity.upsert({
-      where: {id: unity.id},
+  teams.forEach(async (team) => {
+    await prisma.team.upsert({
+      where: { id: team.id },
+      create: team,
+      update: team
+    })
+  })
+
+  unities.forEach(unity => {
+    prisma.unity.upsert({
+      where: { id: unity.id },
       create: unity,
       update: unity
     })
@@ -26,9 +34,9 @@ async function main() {
 
   users.forEach(async user => {
     user.password = await hash(user.password, 12)
-    
-    await prisma.user.upsert({      
-      where:{ id: user.id},
+
+    await prisma.user.upsert({
+      where: { id: user.id },
       create: user,
       update: user
     })
@@ -36,7 +44,7 @@ async function main() {
 
   places.forEach(async place => {
     await prisma.place.upsert({
-      where: {id: place.id},
+      where: { id: place.id },
       create: place,
       update: place
     })
