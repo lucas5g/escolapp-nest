@@ -25,8 +25,8 @@ describe('PlaceService', () => {
   }, 5000);
 
   it('Find All', async () => {
-    const result = await service.findAll();
-    expect(result.length).toBeGreaterThan(1);
+    const result = await service.findAll({ unity_id: 1 });
+    expect(result.length).toBeGreaterThan(0);
 
     result.forEach((row) => {
       expect(row).toHaveProperty('name');

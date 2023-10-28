@@ -18,6 +18,7 @@ model Unity {
   modalities Modality[]
   users      User[]
   teams      Team[]
+  games      Game[]
 
   @@map("unities")
 }
@@ -91,12 +92,15 @@ model Game {
   place_id    Int?
   modality_id Int?
   user_id     Int?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
+  unity_id  Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   Place    Place?    @relation(fields: [place_id], references: [id])
   Modality Modality? @relation(fields: [modality_id], references: [id])
   User     User?     @relation(fields: [user_id], references: [id])
+  Unity    Unity?    @relation(fields: [unity_id], references: [id])
 
   @@map("games")
 }

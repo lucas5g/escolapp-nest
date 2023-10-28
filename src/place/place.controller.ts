@@ -8,7 +8,6 @@ import {
   Delete,
   HttpCode,
   Query,
-  
 } from '@nestjs/common';
 import { PlaceService } from './place.service';
 import { CreatePlaceDto } from './dto/create-place.dto';

@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { PrismaExceptionFilter } from './prisma/prisma-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { version } from 'package.json'
+import { version } from 'package.json';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

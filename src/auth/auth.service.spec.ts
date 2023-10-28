@@ -17,7 +17,7 @@ describe('AuthService', () => {
 
   it('login', async () => {
     const data = {
-      email: 'test@mail.com',
+      email: 'admin@mail.com',
       password: 'qweqwe',
     };
 

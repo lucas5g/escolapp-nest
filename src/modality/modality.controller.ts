@@ -29,7 +29,7 @@ export class ModalityController {
   }
 
   @Get()
-  findAll(@Query() findModalityDto:FindModalityDto ) {
+  findAll(@Query() findModalityDto: FindModalityDto) {
     return this.modalityService.findAll(findModalityDto);
   }
 

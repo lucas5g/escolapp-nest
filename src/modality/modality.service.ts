@@ -15,7 +15,7 @@ export class ModalityService {
 
   findAll(findModalityDto: FindModalityDto) {
     return this.prisma.modality.findMany({
-      where:findModalityDto
+      where: findModalityDto,
     });
   }
 

@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, ValidationPipe } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
@@ -46,7 +46,5 @@ import { GameModule } from './game/game.module';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(HttpMethodLoggerMiddleware).forRoutes('*');
-
   }
-
 }

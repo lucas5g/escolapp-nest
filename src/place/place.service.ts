@@ -13,9 +13,9 @@ export class PlaceService {
     });
   }
 
-  findAll(findPlaceDto:FindPlaceDto) {
+  findAll(findPlaceDto: FindPlaceDto) {
     return this.prisma.place.findMany({
-      where: findPlaceDto
+      where: findPlaceDto,
     });
   }
 

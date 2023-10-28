@@ -1,7 +1,7 @@
-import { IsNotEmpty } from 'class-validator';
 import { Transform } from 'class-transformer';
+import { IsNotEmpty } from 'class-validator';
 
-export class FindModalityDto {
+export class FindGameDto {
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
   unity_id: number;
