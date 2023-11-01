@@ -15,11 +15,24 @@ describe('GameService', () => {
   });
 
   it('Create', async () => {
+    const teams = [
+      {
+        goals: 0,
+        points: 0,
+        team_id: 1,
+      },
+      {
+        goals: 0,
+        points: 0,
+        team_id: 2,
+      },
+    ];
+
     const data = {
       date: new Date(),
       startHours: '08:00',
       endHours: '09:00',
-      teams: ['C123123', 'C321321'],
+      teams: String(teams),
       modality_id: 1,
       place_id: 1,
       user_id: 1,
