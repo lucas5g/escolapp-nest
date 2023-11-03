@@ -1,6 +1,6 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from 'class-validator';
 
 export class FindPointDto {
   @IsNotEmpty()
-  unity_id:number
+  unity_id: number;
 }

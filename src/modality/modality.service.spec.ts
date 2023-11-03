@@ -20,6 +20,7 @@ describe('ModalityService', () => {
       unity_id: 1,
       members_quantity: 10,
       teams_quantity: 20,
+      type: 'collective',
     } as Modality;
 
     const result = await service.create(data);
@@ -29,7 +30,7 @@ describe('ModalityService', () => {
   }, 5000);
 
   it('Find All', async () => {
-    const result = await service.findAll();
+    const result = await service.findAll({ unity_id: 2 });
     expect(result.length).toBeGreaterThan(1);
 
     result.forEach((row) => {

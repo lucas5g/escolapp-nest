@@ -10,6 +10,7 @@ export class UserService {
     id: true,
     email: true,
     unity_id: true,
+    profile: true,
   };
 
   constructor(private readonly prisma: PrismaService) {}

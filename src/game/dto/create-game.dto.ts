@@ -18,7 +18,7 @@ class TeamDto {
   points: number;
 
   @IsInt()
-  fairPlay: number
+  fairPlay: number;
 }
 
 export class CreateGameDto {

@@ -50,6 +50,7 @@ async function main() {
     })
   })
 
+  await setTimeout(1000)
   games.forEach(async game => {
     await prisma.game.upsert({
       where:{id: game.id},

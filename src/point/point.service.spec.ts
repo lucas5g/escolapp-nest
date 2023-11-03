@@ -13,9 +13,9 @@ describe('PointService', () => {
     service = module.get<PointService>(PointService);
   });
 
-  it('Find All', async() => {
-    const result = await service.findAll({unity_id:1})
+  it('Find All', async () => {
+    const result = await service.findAll({ unity_id: 1 });
 
-    console.log(JSON.stringify(result, null, 2))
+    console.log(JSON.stringify(result, null, 2));
   });
 });

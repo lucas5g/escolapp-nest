@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from '@prisma/client';
 import { Transform } from 'class-transformer';
-import { IsNotEmpty } from 'class-validator';
+import { IsEnum, IsNotEmpty } from 'class-validator';
 
 export class CreateModalityDto {
   @ApiProperty()
@@ -21,4 +22,7 @@ export class CreateModalityDto {
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
   teams_quantity: number;
+
+  @IsEnum(Type)
+  type: Type;
 }

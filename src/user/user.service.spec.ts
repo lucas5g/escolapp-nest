@@ -19,6 +19,7 @@ describe('UserService', () => {
       email: `test${new Date().getMinutes()}@mail.com`,
       password: 'qweqwe',
       unity_id: 1,
+      profile: 'admin',
     } as User;
 
     const result = await service.create(data);
