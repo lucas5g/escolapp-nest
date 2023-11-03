@@ -7,7 +7,7 @@ import { ApiTags } from '@nestjs/swagger';
 export class PointController {
   constructor(private readonly pointService: PointService) {}
 
-  @Post()
+  // @Post()
   // create(@Body() createPointDto: CreatePointDto) {
   //   return this.pointService.create(createPointDto);
   // }

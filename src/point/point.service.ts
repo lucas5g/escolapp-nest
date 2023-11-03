@@ -1,26 +1,22 @@
 import { Injectable } from '@nestjs/common';
-// import { CreatePointDto } from './dto/create-point.dto';
-// import { UpdatePointDto } from './dto/update-point.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { FindPointDto } from './dto/find-point.dto';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class PointService {
-  // create(createPointDto: CreatePointDto) {
-  //   return 'This action adds a new point';
-  // }
 
-  findAll() {
-    return `This action returns all point`;
+  constructor(private prisma: PrismaService) { }
+
+  async findAll(findPointDto: FindPointDto) {
+
+    const [groups, games ] = await this.prisma.$transaction([
+      this.prisma.g
+    ])
+    // const points = await this.prisma.game.findMany({
+    //   where: findPointDto
+    // })
+    // return points
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} point`;
-  }
-
-  // update(id: number, updatePointDto: UpdatePointDto) {
-  //   return `This action updates a #${id} point`;
-  // }
-
-  remove(id: number) {
-    return `This action removes a #${id} point`;
-  }
 }

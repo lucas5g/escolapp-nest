@@ -9,13 +9,16 @@ import {
 
 class TeamDto {
   @IsInt()
-  team_id: number;
+  id: number;
 
   @IsInt()
   goals: number;
 
   @IsInt()
   points: number;
+
+  @IsInt()
+  fairPlay: number
 }
 
 export class CreateGameDto {
