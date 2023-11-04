@@ -6,12 +6,12 @@ import {
   Patch,
   Param,
   Delete,
-  Query,
 } from '@nestjs/common';
 import { GameService } from './game.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
-import { FindGameDto } from './dto/find-game.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @Controller('games')
 export class GameController {
@@ -23,8 +23,8 @@ export class GameController {
   }
 
   @Get()
-  findAll(@Query() findGameDto: FindGameDto) {
-    return this.gameService.findAll(findGameDto);
+  findAll(@Auth() auth: AuthEntity) {
+    return this.gameService.findAll(auth);
   }
 
   @Get(':id')

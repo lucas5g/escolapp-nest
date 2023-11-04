@@ -6,11 +6,15 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { FindUserDto } from './dto/find-user.dto';
 
 @ApiTags('Users')
 @Controller('users')
@@ -23,8 +27,8 @@ export class UserController {
   }
 
   @Get()
-  findAll() {
-    return this.userService.findAll();
+  findAll(@Auth() auth: AuthEntity, @Query() findUserDto:FindUserDto) {
+    return this.userService.findAll(auth, findUserDto);
   }
 
   @Get(':id')

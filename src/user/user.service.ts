@@ -3,6 +3,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { hash } from 'bcrypt';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { FindUserDto } from './dto/find-user.dto';
 
 @Injectable()
 export class UserService {
@@ -25,9 +27,17 @@ export class UserService {
     });
   }
 
-  findAll() {
+  findAll(auth: AuthEntity, findUserDto: FindUserDto) {
     return this.prisma.user.findMany({
+      where:{
+        unity_id: auth.unity_id,
+        ...findUserDto
+      },
       select: this.select,
+      orderBy:{
+        email:'asc'
+      }
+
     });
   }
 
