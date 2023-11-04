@@ -18,10 +18,10 @@ export class GroupService {
     }[];
     return groups.map((group, i) => {
       return {
-        id: i + 1,
+        id: group.turma,
         name: group.turma,
         quantity: group.quantidade,
       };
-    });
+    })
   }
 }

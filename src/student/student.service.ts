@@ -24,6 +24,6 @@ export class StudentService {
         name: student.nome,
         group: student.turma,
       };
-    });
+    }).sort((a,b) => a.name.localeCompare(b.name));
   }
 }
