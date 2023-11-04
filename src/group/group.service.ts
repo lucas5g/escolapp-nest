@@ -5,18 +5,20 @@ import { UnityService } from 'src/unity/unity.service';
 
 @Injectable()
 export class GroupService {
-  constructor(private unityService: UnityService){}
-  async findAll(auth:AuthEntity) {
+  constructor(private unityService: UnityService) {}
+  async findAll(auth: AuthEntity) {
+    const unity = await this.unityService.findOne(auth.unity_id);
 
-    const unity = await this.unityService.findOne(auth.unity_id)
-
-    const groups = (await googleSheets({ spreadsheetId: unity.spreedsheetId, range:'G:H'})) as {
+    const groups = (await googleSheets({
+      spreadsheetId: unity.spreedsheetId,
+      range: 'G:H',
+    })) as {
       turma: string;
       quantidade: number;
     }[];
     return groups.map((group, i) => {
       return {
-        id:i+1,
+        id: i + 1,
         name: group.turma,
         quantity: group.quantidade,
       };

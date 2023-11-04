@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { FindModalityDto } from './dto/find-modality.dto';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @Injectable()
 export class ModalityService {
@@ -13,9 +13,11 @@ export class ModalityService {
     });
   }
 
-  findAll(findModalityDto: FindModalityDto) {
+  findAll(auth: AuthEntity) {
     return this.prisma.modality.findMany({
-      where: findModalityDto,
+      where: {
+        unity_id: auth.unity_id,
+      },
     });
   }
 

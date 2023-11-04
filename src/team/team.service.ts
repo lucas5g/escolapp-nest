@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { FindTeamDto } from './dto/find-team.dto';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @Injectable()
 export class TeamService {
@@ -14,7 +14,7 @@ export class TeamService {
     });
   }
 
-  findAll({ unity_id }: FindTeamDto) {
+  findAll({ unity_id }: AuthEntity) {
     return this.prisma.team.findMany({
       where: { unity_id },
     });

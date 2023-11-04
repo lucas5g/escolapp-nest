@@ -4,7 +4,7 @@ import { GroupController } from './group.controller';
 import { UnityModule } from 'src/unity/unity.module';
 
 @Module({
-  imports:[UnityModule],
+  imports: [UnityModule],
   controllers: [GroupController],
   providers: [GroupService],
   exports: [GroupService],

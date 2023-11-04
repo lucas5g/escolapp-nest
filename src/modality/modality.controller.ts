@@ -8,14 +8,14 @@ import {
   Delete,
   HttpCode,
   UseInterceptors,
-  Query,
 } from '@nestjs/common';
 import { ModalityService } from './modality.service';
 import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { ApiTags } from '@nestjs/swagger';
-import { FindModalityDto } from './dto/find-modality.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @ApiTags('Modalities')
 @Controller('modalities')
@@ -29,8 +29,8 @@ export class ModalityController {
   }
 
   @Get()
-  findAll(@Query() findModalityDto: FindModalityDto) {
-    return this.modalityService.findAll(findModalityDto);
+  findAll(@Auth() auth: AuthEntity) {
+    return this.modalityService.findAll(auth);
   }
 
   @Get(':id')

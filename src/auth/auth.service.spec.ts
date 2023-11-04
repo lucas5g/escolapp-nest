@@ -23,15 +23,13 @@ describe('AuthService', () => {
     };
 
     const result = await service.login(data);
-    const decoded = jwtDecode(result.accessToken)
+    const decoded = jwtDecode(result.accessToken);
 
     expect(result).toHaveProperty('accessToken');
 
-    ['unity'].forEach(property => {
-      expect(decoded).toHaveProperty(property)
-    })
-    expect(decoded).not.toHaveProperty('password')
-
-    console.log(decoded)
+    ['unity_id'].forEach((property) => {
+      expect(decoded).toHaveProperty(property);
+    });
+    expect(decoded).not.toHaveProperty('password');
   }, 5000);
 });

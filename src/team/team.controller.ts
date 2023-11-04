@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  Query,
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
@@ -14,7 +13,8 @@ import { TeamService } from './team.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { FindTeamDto } from './dto/find-team.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @ApiTags('Teams')
 @Controller('teams')
@@ -27,8 +27,8 @@ export class TeamController {
   }
 
   @Get()
-  findAll(@Query() findTeamDto: FindTeamDto) {
-    return this.teamService.findAll(findTeamDto);
+  findAll(@Auth() auth: AuthEntity) {
+    return this.teamService.findAll(auth);
   }
 
   @Get(':id')

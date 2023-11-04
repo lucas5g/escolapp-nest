@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Req } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { ApiTags } from '@nestjs/swagger';
 import { Auth } from 'src/auth/decorators/auth.decorator';
@@ -13,5 +13,4 @@ export class GroupController {
   findAll(@Auth() auth: AuthEntity) {
     return this.groupService.findAll(auth);
   }
-
 }

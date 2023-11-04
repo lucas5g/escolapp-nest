@@ -5,4 +5,4 @@ export const Auth = createParamDecorator(
     const request = ctx.switchToHttp().getRequest();
     return request.user;
   },
-)
+);

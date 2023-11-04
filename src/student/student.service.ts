@@ -5,12 +5,14 @@ import { UnityService } from 'src/unity/unity.service';
 
 @Injectable()
 export class StudentService {
-  constructor(private unityService: UnityService){}
-  async findAll(auth:AuthEntity) {
+  constructor(private unityService: UnityService) {}
+  async findAll(auth: AuthEntity) {
+    const unity = await this.unityService.findOne(auth.unity_id);
 
-    const unity = await this.unityService.findOne(auth.unity_id)
-    
-    const students = (await googleSheets({ spreadsheetId: unity.spreedsheetId,  range: 'A:D' })) as {
+    const students = (await googleSheets({
+      spreadsheetId: unity.spreedsheetId,
+      range: 'A:D',
+    })) as {
       ra: string;
       nome: string;
       turma: string;

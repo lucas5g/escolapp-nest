@@ -5,9 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UnityService {
-  constructor(
-    private prisma: PrismaService, 
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   create(createUnityDto: CreateUnityDto) {
     return this.prisma.unity.create({
@@ -17,10 +15,10 @@ export class UnityService {
 
   findAll() {
     return this.prisma.unity.findMany({
-      select:{
+      select: {
         id: true,
-        name:true,
-      }
+        name: true,
+      },
     });
   }
 

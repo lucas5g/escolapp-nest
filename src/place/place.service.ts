@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { FindPlaceDto } from './dto/find-place.dto';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @Injectable()
 export class PlaceService {
@@ -13,9 +13,11 @@ export class PlaceService {
     });
   }
 
-  findAll(findPlaceDto: FindPlaceDto) {
+  findAll(auth: AuthEntity) {
     return this.prisma.place.findMany({
-      where: findPlaceDto,
+      where: {
+        unity_id: auth.unity_id,
+      },
     });
   }
 

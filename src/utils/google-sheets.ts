@@ -6,9 +6,9 @@ import {
 import { google } from 'googleapis';
 import { env } from './env';
 
-interface GoogleSheets{
-  spreadsheetId:string,
-  range:string
+interface GoogleSheets {
+  spreadsheetId: string;
+  range: string;
 }
 
 export async function googleSheets({ spreadsheetId, range }: GoogleSheets) {

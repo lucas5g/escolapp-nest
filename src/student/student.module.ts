@@ -4,7 +4,7 @@ import { StudentController } from './student.controller';
 import { UnityModule } from 'src/unity/unity.module';
 
 @Module({
-  imports:[UnityModule],
+  imports: [UnityModule],
   controllers: [StudentController],
   providers: [StudentService],
 })
