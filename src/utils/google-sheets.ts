@@ -6,7 +6,12 @@ import {
 import { google } from 'googleapis';
 import { env } from './env';
 
-export async function googleSheets({ range }: { range: string }) {
+interface GoogleSheets{
+  spreadsheetId:string,
+  range:string
+}
+
+export async function googleSheets({ spreadsheetId, range }: GoogleSheets) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_id: env.googleClientId,
@@ -20,7 +25,7 @@ export async function googleSheets({ range }: { range: string }) {
 
   try {
     const { data } = await spreadsheets.values.get({
-      spreadsheetId: env.spreadSheetId,
+      spreadsheetId,
       range,
     });
 
