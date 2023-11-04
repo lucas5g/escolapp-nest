@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { UserService } from '../user/user.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+import { jwtDecode } from 'jwt-decode';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -22,6 +23,15 @@ describe('AuthService', () => {
     };
 
     const result = await service.login(data);
+    const decoded = jwtDecode(result.accessToken)
+
     expect(result).toHaveProperty('accessToken');
+
+    ['unity'].forEach(property => {
+      expect(decoded).toHaveProperty(property)
+    })
+    expect(decoded).not.toHaveProperty('password')
+
+    console.log(decoded)
   }, 5000);
 });

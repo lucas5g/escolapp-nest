@@ -7,7 +7,7 @@ import { version } from 'package.json';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors()
   app.useGlobalFilters(new PrismaExceptionFilter());
 
   app.useGlobalPipes(

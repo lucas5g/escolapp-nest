@@ -6,7 +6,7 @@ import { PrismaService } from '../prisma/prisma.service';
 @Injectable()
 export class UnityService {
   constructor(
-    private prisma: PrismaService, // @Inject(CACHE_MANAGER) private cache: Cache
+    private prisma: PrismaService, 
   ) {}
 
   create(createUnityDto: CreateUnityDto) {
@@ -16,7 +16,12 @@ export class UnityService {
   }
 
   findAll() {
-    return this.prisma.unity.findMany();
+    return this.prisma.unity.findMany({
+      select:{
+        id: true,
+        name:true,
+      }
+    });
   }
 
   findOne(id: number) {

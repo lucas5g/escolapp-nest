@@ -13,6 +13,7 @@ datasource db {
 model Unity {
   id   Int    @id @default(autoincrement())
   name String
+  spreedsheetId String
 
   places     Place[]
   modalities Modality[]

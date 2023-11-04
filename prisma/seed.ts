@@ -7,6 +7,13 @@ const prisma = new PrismaClient()
 
 async function main() {
 
+  unities.forEach(async(unity) => {
+    await prisma.unity.upsert({
+      where: { id: unity.id },
+      create: unity,
+      update: unity
+    })
+  })
   teams.forEach(async (team) => {
     await prisma.team.upsert({
       where: { id: team.id },
@@ -15,13 +22,7 @@ async function main() {
     })
   })
 
-  unities.forEach(unity => {
-    prisma.unity.upsert({
-      where: { id: unity.id },
-      create: unity,
-      update: unity
-    })
-  })
+
 
   modalities.forEach(async (modality) => {
     await setTimeout(1000)
@@ -50,7 +51,7 @@ async function main() {
     })
   })
 
-  await setTimeout(1000)
+  await setTimeout(5000)
   games.forEach(async game => {
     await prisma.game.upsert({
       where:{id: game.id},

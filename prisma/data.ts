@@ -1,9 +1,15 @@
-import { Game, Modality, Prisma, Team, User } from "@prisma/client"
+import { Game, Modality, Prisma, Team, Unity, User } from "@prisma/client"
 
-export const unities = [
+export const unities:Unity[] = [
   {
     id: 1,
-    name: 'contagem'
+    name: 'unity-test',
+    spreedsheetId: 'id planilha'
+  },
+  {
+    id:2,
+    name: 'Contagem',
+    spreedsheetId:process.env.SPREAD_SHEET_ID
   }
 ]
 export const modalities: Modality[] = [

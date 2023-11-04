@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { FindStudentDto } from './dto/find-student.dto';
 import { googleSheets } from 'src/utils/google-sheets';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { UnityService } from 'src/unity/unity.service';
 
 @Injectable()
 export class StudentService {
-  async findAll({ unity }: FindStudentDto) {
-    const students = (await googleSheets({ range: `${unity}!A:D` })) as {
+  constructor(private unityService: UnityService){}
+  async findAll(auth:AuthEntity) {
+
+    const unity = await this.unityService.findOne(auth.unity_id)
+    
+    const students = (await googleSheets({ spreadsheetId: unity.spreedsheetId,  range: 'A:D' })) as {
       ra: string;
       nome: string;
       turma: string;
