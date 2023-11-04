@@ -46,7 +46,7 @@ describe('GameService', () => {
   });
 
   it('Find All', async () => {
-    const result = await service.findAll({ unity_id: 1 });
+    const result = await service.findAll({ unity_id: 2 });
 
     testList(result[0]);
   });

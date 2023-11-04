@@ -5,5 +5,6 @@ import { UnityController } from './unity.controller';
 @Module({
   controllers: [UnityController],
   providers: [UnityService],
+  exports: [UnityService],
 })
 export class UnityModule {}
