@@ -26,5 +26,5 @@ describe('GroupService', () => {
       expect(row).toHaveProperty('name');
       expect(row).toHaveProperty('quantity');
     });
-  });
+  }, 5000);
 });

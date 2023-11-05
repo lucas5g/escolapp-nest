@@ -22,3 +22,5 @@ git commit -m "$message"
 git push
 
 echo $message
+
+vercel --prod

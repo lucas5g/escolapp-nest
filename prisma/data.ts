@@ -38,6 +38,13 @@ export const users: User[] = [
     password: 'qweqwe',
     unity_id: 1,
     profile: 'admin'
+  },
+  {
+    id: 3,
+    email: 'mediador@mail.com',
+    password: 'qweqwe',
+    unity_id: 1,
+    profile: 'judge'
   }
 ]
 

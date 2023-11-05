@@ -42,7 +42,7 @@ describe('UserService', () => {
       expect(row).toHaveProperty('email');
       expect(row).toHaveProperty('unity_id');
     });
-  });
+  }, 5000);
 
   it('find one', async () => {
     const result = await service.findOne(1);

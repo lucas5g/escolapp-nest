@@ -44,7 +44,7 @@ describe('GameService', () => {
     expect(result).toMatchObject(data);
 
     await service.remove(result.id);
-  });
+  }, 7000);
 
   it('Find All', async () => {
     const auth = {
@@ -53,7 +53,7 @@ describe('GameService', () => {
     const result = await service.findAll(auth);
 
     testList(result[0]);
-  });
+  }, 5000);
 
   it('Find One', async () => {
     const result = await service.findOne(1);

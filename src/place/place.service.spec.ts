@@ -49,5 +49,5 @@ describe('PlaceService', () => {
     };
     const result = await service.update(1, data);
     expect(result).toMatchObject(data);
-  });
+  }, 5000);
 });
