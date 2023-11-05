@@ -13,8 +13,8 @@ import { TeamService } from './team.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @ApiTags('Teams')
 @Controller('teams')

@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ModalityService } from './modality.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { Modality } from '@prisma/client';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('ModalityService', () => {
   let service: ModalityService;

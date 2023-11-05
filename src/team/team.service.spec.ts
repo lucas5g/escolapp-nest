@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TeamService } from './team.service';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { PrismaService } from '../prisma/prisma.service';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('TeamService', () => {
   let service: TeamService;

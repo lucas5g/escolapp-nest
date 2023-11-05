@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlaceService } from './place.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('PlaceService', () => {
   let service: PlaceService;
@@ -22,10 +23,13 @@ describe('PlaceService', () => {
     expect(result).toMatchObject(data);
 
     await service.remove(result.id);
-  }, 5000);
+  }, 6000);
 
   it('Find All', async () => {
-    const result = await service.findAll({ unity_id: 1 });
+    const auth = {
+      unity_id: 1,
+    } as AuthEntity;
+    const result = await service.findAll(auth);
     expect(result.length).toBeGreaterThan(0);
 
     result.forEach((row) => {

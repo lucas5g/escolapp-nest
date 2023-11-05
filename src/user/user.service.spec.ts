@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('UserService', () => {
   let service: UserService;

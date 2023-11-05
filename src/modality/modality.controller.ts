@@ -14,8 +14,8 @@ import { CreateModalityDto } from './dto/create-modality.dto';
 import { UpdateModalityDto } from './dto/update-modality.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { ApiTags } from '@nestjs/swagger';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @ApiTags('Modalities')
 @Controller('modalities')

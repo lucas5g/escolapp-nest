@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GroupService } from './group.service';
 import 'dotenv/config';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
-import { UnityService } from 'src/unity/unity.service';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { AuthEntity } from '../auth/entities/auth.entity';
+import { UnityService } from '../unity/unity.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 describe('GroupService', () => {
   let service: GroupService;

@@ -12,8 +12,8 @@ import { PlaceService } from './place.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @ApiTags('Places')
 @Controller('places')

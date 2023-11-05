@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { StudentService } from './student.service';
-import { UnityService } from 'src/unity/unity.service';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { UnityService } from '../unity/unity.service';
+import { AuthEntity } from '../auth/entities/auth.entity';
+import { PrismaService } from '../prisma/prisma.service';
 
 describe('StudentService', () => {
   let service: StudentService;

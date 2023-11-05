@@ -12,9 +12,9 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
 import { FindUserDto } from './dto/find-user.dto';
+import { AuthEntity } from '../auth/entities/auth.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
 
 @ApiTags('Users')
 @Controller('users')

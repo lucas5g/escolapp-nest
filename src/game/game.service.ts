@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @Injectable()
 export class GameService {

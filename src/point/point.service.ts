@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { PrismaService } from '../prisma/prisma.service';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @Injectable()
 export class PointService {

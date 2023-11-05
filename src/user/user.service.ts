@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { hash } from 'bcrypt';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { AuthEntity } from '../auth/entities/auth.entity';
 import { FindUserDto } from './dto/find-user.dto';
 
 @Injectable()

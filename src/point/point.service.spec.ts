@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PointService } from './point.service';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { GroupService } from 'src/group/group.service';
-import { UnityService } from 'src/unity/unity.service';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { PrismaService } from '../prisma/prisma.service';
+import { GroupService } from '../group/group.service';
+import { UnityService } from '../unity/unity.service';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('PointService', () => {
   let service: PointService;

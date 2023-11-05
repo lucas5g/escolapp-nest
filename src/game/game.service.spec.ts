@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { GameService } from './game.service';
 import { Game } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('GameService', () => {
   let service: GameService;

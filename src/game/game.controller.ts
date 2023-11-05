@@ -10,8 +10,8 @@ import {
 import { GameService } from './game.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @Controller('games')
 export class GameController {

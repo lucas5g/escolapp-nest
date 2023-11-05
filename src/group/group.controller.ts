@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { ApiTags } from '@nestjs/swagger';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthEntity } from 'src/auth/entities/auth.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { AuthEntity } from '../auth/entities/auth.entity';
 
 @ApiTags('Groups')
 @Controller('groups')
