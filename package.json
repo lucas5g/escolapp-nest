@@ -1,6 +1,6 @@
 {
   "name": "escolapp-nest",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "author": "",
   "private": true,
@@ -11,7 +11,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "node dist/main",
+    "start": "node dist/src/main.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
