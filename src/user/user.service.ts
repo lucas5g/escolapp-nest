@@ -27,17 +27,16 @@ export class UserService {
     });
   }
 
-  findAll(auth: AuthEntity, findUserDto: FindUserDto) {
+  findAll(auth: AuthEntity, findUserDto?: FindUserDto) {
     return this.prisma.user.findMany({
-      where:{
+      where: {
         unity_id: auth.unity_id,
-        ...findUserDto
+        ...findUserDto,
       },
       select: this.select,
-      orderBy:{
-        email:'asc'
-      }
-
+      orderBy: {
+        email: 'asc',
+      },
     });
   }
 

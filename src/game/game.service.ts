@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { FindGameDto } from './dto/find-game.dto';
 import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @Injectable()
@@ -15,12 +14,12 @@ export class GameService {
     });
   }
 
-  findAll({unity_id}: AuthEntity) {
+  findAll({ unity_id }: AuthEntity) {
     return this.prisma.game.findMany({
-      where:{unity_id},
-      orderBy:{
-        date:'asc'
-      }
+      where: { unity_id },
+      orderBy: {
+        date: 'asc',
+      },
     });
   }
 

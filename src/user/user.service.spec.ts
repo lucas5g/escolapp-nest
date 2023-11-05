@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 describe('UserService', () => {
   let service: UserService;
@@ -31,7 +32,10 @@ describe('UserService', () => {
   });
 
   it('find all', async () => {
-    const result = await service.findAll();
+    const auth = {
+      unity_id: 1,
+    } as AuthEntity;
+    const result = await service.findAll(auth);
     result.forEach((row) => {
       expect(row).not.toHaveProperty('password');
       expect(row).toHaveProperty('id');

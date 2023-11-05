@@ -27,7 +27,7 @@ export class UserController {
   }
 
   @Get()
-  findAll(@Auth() auth: AuthEntity, @Query() findUserDto:FindUserDto) {
+  findAll(@Auth() auth: AuthEntity, @Query() findUserDto: FindUserDto) {
     return this.userService.findAll(auth, findUserDto);
   }
 

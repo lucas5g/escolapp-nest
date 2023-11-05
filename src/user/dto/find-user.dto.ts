@@ -1,8 +1,8 @@
-import { Profile } from "@prisma/client";
-import { IsEnum, IsOptional } from "class-validator";
+import { Profile } from '@prisma/client';
+import { IsEnum, IsOptional } from 'class-validator';
 
-export class FindUserDto{
+export class FindUserDto {
   @IsOptional()
   @IsEnum(Profile)
-  profile: Profile
+  profile: Profile;
 }

@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ModalityService } from './modality.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { Modality } from '@prisma/client';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 describe('ModalityService', () => {
   let service: ModalityService;
@@ -30,7 +31,10 @@ describe('ModalityService', () => {
   }, 5000);
 
   it('Find All', async () => {
-    const result = await service.findAll({ unity_id: 2 });
+    const auth = {
+      unity_id: 1,
+    } as AuthEntity;
+    const result = await service.findAll(auth);
     expect(result.length).toBeGreaterThan(1);
 
     result.forEach((row) => {

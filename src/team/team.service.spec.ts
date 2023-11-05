@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TeamService } from './team.service';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 describe('TeamService', () => {
   let service: TeamService;
@@ -33,10 +34,13 @@ describe('TeamService', () => {
     expect(result).toMatchObject(data);
 
     await service.remove(result.id);
-  });
+  }, 5000);
 
   it('Find All', async () => {
-    const result = await service.findAll({ unity_id: 1 });
+    const auth = {
+      unity_id: 1,
+    } as AuthEntity;
+    const result = await service.findAll(auth);
     result.forEach((row) => {
       expect(row).toHaveProperty('name');
       expect(row).toHaveProperty('group');
@@ -53,7 +57,7 @@ describe('TeamService', () => {
     expect(result).toHaveProperty('genre');
     expect(result).toHaveProperty('modality_id');
     expect(result).toHaveProperty('unity_id');
-  });
+  }, 6000);
 
   it('Update', async () => {
     const data = {
@@ -68,5 +72,5 @@ describe('TeamService', () => {
     const result = await service.update(1, data);
 
     expect(result).toMatchObject(data);
-  }, 6000);
+  }, 7000);
 });

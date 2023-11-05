@@ -14,22 +14,19 @@ async function main() {
       update: unity
     })
   })
+  await setTimeout(2000)
+  modalities.forEach(async (modality) => {
+    await prisma.modality.upsert({
+      where: { id: modality.id },
+      create: modality,
+      update: modality
+    })
+  })
   teams.forEach(async (team) => {
     await prisma.team.upsert({
       where: { id: team.id },
       create: team,
       update: team
-    })
-  })
-
-
-
-  modalities.forEach(async (modality) => {
-    await setTimeout(1000)
-    await prisma.modality.upsert({
-      where: { id: modality.id },
-      create: modality,
-      update: modality
     })
   })
 

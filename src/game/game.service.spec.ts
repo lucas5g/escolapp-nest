@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { GameService } from './game.service';
 import { Game } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 describe('GameService', () => {
   let service: GameService;
@@ -46,7 +47,10 @@ describe('GameService', () => {
   });
 
   it('Find All', async () => {
-    const result = await service.findAll({ unity_id: 2 });
+    const auth = {
+      unity_id: 1,
+    } as AuthEntity;
+    const result = await service.findAll(auth);
 
     testList(result[0]);
   });

@@ -4,7 +4,7 @@ import { AuthEntity } from 'src/auth/entities/auth.entity';
 
 @Injectable()
 export class PointService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async findAll({ unity_id }: AuthEntity) {
     const teams = await this.prisma.team.findMany({
@@ -26,7 +26,7 @@ export class PointService {
     });
 
     const games = await this.prisma.game.findMany({
-      where: {unity_id},
+      where: { unity_id },
     });
 
     const gamesTeams = games.map((game) => game.teams).flat();
@@ -42,7 +42,7 @@ export class PointService {
       })
       .map((group, i) => {
         return {
-          id: i+ 1,
+          id: i + 1,
           name: group.name,
           totalPoints: group.teams.reduce((accumulator, currentValue: any) => {
             return accumulator + currentValue.points;

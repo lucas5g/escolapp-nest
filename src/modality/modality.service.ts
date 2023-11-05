@@ -18,9 +18,9 @@ export class ModalityService {
       where: {
         unity_id: auth.unity_id,
       },
-      orderBy:{
-        name:'asc'
-      }
+      orderBy: {
+        name: 'asc',
+      },
     });
   }
 

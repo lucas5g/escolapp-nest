@@ -18,12 +18,14 @@ export class StudentService {
       turma: string;
     }[];
 
-    return students.map((student) => {
-      return {
-        ra: student.ra,
-        name: student.nome,
-        group: student.turma,
-      };
-    }).sort((a,b) => a.name.localeCompare(b.name));
+    return students
+      .map((student) => {
+        return {
+          ra: student.ra,
+          name: student.nome,
+          group: student.turma,
+        };
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 }
