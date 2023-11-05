@@ -18,6 +18,9 @@ export class GameService {
   findAll({unity_id}: AuthEntity) {
     return this.prisma.game.findMany({
       where:{unity_id},
+      orderBy:{
+        date:'asc'
+      }
     });
   }
 
