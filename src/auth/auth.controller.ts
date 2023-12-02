@@ -15,14 +15,10 @@ import { Public } from './decorators/public.decorator';
 import { UpdateUserDto } from '../user/dto/update-user.dto';
 import { AuthEntity } from './entities/auth.entity';
 import { Auth } from './decorators/auth.decorator';
-import { UserService } from '../user/user.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   @Public()
   @HttpCode(HttpStatus.OK)
@@ -37,7 +33,7 @@ export class AuthController {
   }
 
   @Patch('me')
-  updateMe(@Body() body: UpdateUserDto, @Auth() auth: AuthEntity) {
-    return this.userService.update(auth.id, body);
+  updateMe(@Body() updateUserDto: UpdateUserDto, @Auth() auth: AuthEntity) {
+    return this.authService.update(updateUserDto, auth);
   }
 }
