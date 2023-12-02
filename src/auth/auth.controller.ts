@@ -12,10 +12,17 @@ import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
 
 import { Public } from './decorators/public.decorator';
+import { UpdateUserDto } from '../user/dto/update-user.dto';
+import { AuthEntity } from './entities/auth.entity';
+import { Auth } from './decorators/auth.decorator';
+import { UserService } from '../user/user.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+  ) {}
 
   @Public()
   @HttpCode(HttpStatus.OK)
@@ -30,7 +37,7 @@ export class AuthController {
   }
 
   @Patch('me')
-  updateMe(@Body() body: any) {
-    return body;
+  updateMe(@Body() body: UpdateUserDto, @Auth() auth: AuthEntity) {
+    return this.userService.update(auth.id, body);
   }
 }

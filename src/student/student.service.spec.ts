@@ -28,5 +28,5 @@ describe('StudentService', () => {
       expect(row).toHaveProperty('name');
       expect(row).toHaveProperty('group');
     });
-  });
+  }, 5000);
 });
