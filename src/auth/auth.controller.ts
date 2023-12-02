@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Request,
+  Patch,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
@@ -22,9 +23,14 @@ export class AuthController {
   login(@Body() loginAuthDto: LoginAuthDto) {
     return this.authService.login(loginAuthDto);
   }
-  // @UseGuards(AuthGuard)
+
   @Get('me')
   me(@Request() req: any) {
     return req.user;
+  }
+
+  @Patch('me')
+  updateMe(@Body() body: any) {
+    return body;
   }
 }

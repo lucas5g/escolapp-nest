@@ -22,6 +22,7 @@ async function main() {
       update: modality
     })
   })
+   
   teams.forEach(async (team) => {
     await prisma.team.upsert({
       where: { id: team.id },
