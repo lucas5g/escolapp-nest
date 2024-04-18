@@ -1,6 +1,15 @@
 message=$1 
 
-pnpm test
+npm run lint
+status=$?
+
+if [ "$status" != 0 ]; then
+    echo "Erro no lint"
+    exit 
+fi
+
+
+npm  test
 status=$?
 
 if [ "$status" != 0 ]; then
@@ -9,18 +18,8 @@ if [ "$status" != 0 ]; then
 fi
 
 
-pnpm run lint
-status=$?
-
-if [ "$status" != 0 ]; then
-    echo "Erro no lint"
-    exit 
-fi
-
 git add .
 git commit -m "$message"
 git push
 
-echo $message
 
-#vercel --prod
