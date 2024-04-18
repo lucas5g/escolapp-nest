@@ -29,7 +29,10 @@ sshpass -p $PASSWORD ssh -t root@128.199.12.79 "\
   source ~/.nvm/nvm.sh &&\
   cd projects/escolapp-nest &&\
   git pull &&\
-  npm i &&\
-  npm run build &&\
-  pm2 restart escolapp-nest --update-env
 "
+#   npm i &&\
+#   npm run build &&\
+#   pm2 restart escolapp-nest --update-env
+#npm i --omit=dev
+
+# NODE_OPTIONS="--max-old-space-size=600" npm run build
