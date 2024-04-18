@@ -1,3 +1,5 @@
+#!/bin/bash
+
 message=$1 
 
 npm run lint
@@ -22,4 +24,12 @@ git add .
 git commit -m "$message"
 git push
 
-
+source .env
+sshpass -p $PASSWORD ssh -t root@128.199.12.79 "\
+  source ~/.nvm/nvm.sh &&\
+  cd projects/escolapp-nest &&\
+  git pull &&\
+  npm i &&\
+  npm run build &&\
+  pm2 restart escolapp-nest --update-env
+"
