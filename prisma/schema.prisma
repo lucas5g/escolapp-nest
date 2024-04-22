@@ -78,6 +78,7 @@ model User {
   games Game[]
 
   @@map("users")
+
 }
 
 enum Genre {
