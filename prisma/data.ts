@@ -3,7 +3,7 @@ import { Game, Modality, Prisma, Team, Unity, User } from "@prisma/client"
 export const unities:Unity[] = [
   {
     id: 1,
-    name: 'unity-test',
+    name: 'Belo Horizonte',
     spreedsheetId: 'id planilha'
   },
   {
@@ -15,7 +15,7 @@ export const unities:Unity[] = [
 export const modalities: Modality[] = [
   {
     id: 1,
-    name: 'test-modality',
+    name: 'Fut test',
     members_quantity: 2,
     teams_quantity: 2,
     unity_id: 1,

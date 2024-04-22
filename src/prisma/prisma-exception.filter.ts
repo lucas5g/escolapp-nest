@@ -29,11 +29,11 @@ export class PrismaExceptionFilter implements ExceptionFilter {
       });
     }
 
-    Logger.error(exception)
+    Logger.error(exception);
 
     return response.status(500).json({
       message: 'Internal server error',
-      statusCode: 500
+      statusCode: 500,
     });
   }
 }
