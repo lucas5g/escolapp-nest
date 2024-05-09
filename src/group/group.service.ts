@@ -16,6 +16,7 @@ export class GroupService {
       turma: string;
       quantidade: number;
     }[];
+
     return groups.map((group) => {
       return {
         id: group.turma,
