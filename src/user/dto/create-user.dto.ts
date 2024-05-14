@@ -12,7 +12,7 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
-  unity_id: number;
+  unityId: number;
 
   @IsEnum(Profile)
   profile: Profile;

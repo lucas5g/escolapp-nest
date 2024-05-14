@@ -6,9 +6,9 @@ import { AuthEntity } from '../auth/entities/auth.entity';
 export class PointService {
   constructor(private prisma: PrismaService) {}
 
-  async findAll({ unity_id }: AuthEntity) {
+  async findAll({ unityId }: AuthEntity) {
     const teams = await this.prisma.team.findMany({
-      where: { unity_id },
+      where: { unityId },
       select: {
         group: true,
         id: true,
@@ -26,7 +26,7 @@ export class PointService {
     });
 
     const games = await this.prisma.game.findMany({
-      where: { unity_id },
+      where: { unityId },
     });
 
     const gamesTeams = games.map((game) => game.teams).flat();

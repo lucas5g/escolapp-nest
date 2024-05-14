@@ -14,9 +14,9 @@ export class TeamService {
     });
   }
 
-  findAll({ unity_id }: AuthEntity) {
+  findAll({ unityId }: AuthEntity) {
     return this.prisma.team.findMany({
-      where: { unity_id },
+      where: { unityId },
     });
   }
 

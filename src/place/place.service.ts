@@ -16,7 +16,7 @@ export class PlaceService {
   findAll(auth: AuthEntity) {
     return this.prisma.place.findMany({
       where: {
-        unity_id: auth.unity_id,
+        unityId: auth.unityId,
       },
     });
   }

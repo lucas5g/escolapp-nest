@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 
 describe('UserService', () => {
   let service: UserService;
-  let serviceAuth: AuthService
+  let serviceAuth: AuthService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -17,11 +17,11 @@ describe('UserService', () => {
     }).compile();
 
     const moduleAuth: TestingModule = await Test.createTestingModule({
-      providers: [AuthService, PrismaService, UserService, JwtService]
-    }).compile()
+      providers: [AuthService, PrismaService, UserService, JwtService],
+    }).compile();
 
     service = module.get<UserService>(UserService);
-    serviceAuth = moduleAuth.get<AuthService>(AuthService)
+    serviceAuth = moduleAuth.get<AuthService>(AuthService);
   });
 
   it('create', async () => {
@@ -73,15 +73,17 @@ describe('UserService', () => {
 
   it('update password and login', async () => {
     const data: UpdateUserDto = {
-      email:'test@mail.com',
+      email: 'test@mail.com',
       password: 'qweqwe',
-    }
+    };
 
-    await service.update(1, data)
+    await service.update(1, data);
 
-    const auth = await serviceAuth.login({email:'test@mail.com', password:'qweqwe'})
+    const auth = await serviceAuth.login({
+      email: 'test@mail.com',
+      password: 'qweqwe',
+    });
 
-    expect(auth).toBe
-
-  })
+    expect(auth).toBe;
+  });
 });

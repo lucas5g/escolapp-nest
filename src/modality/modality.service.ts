@@ -16,7 +16,7 @@ export class ModalityService {
   findAll(auth: AuthEntity) {
     return this.prisma.modality.findMany({
       where: {
-        unity_id: auth.unity_id,
+        unityId: auth.unityId,
       },
       orderBy: {
         name: 'asc',

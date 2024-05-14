@@ -7,7 +7,7 @@ import { UnityService } from '../unity/unity.service';
 export class StudentService {
   constructor(private unityService: UnityService) {}
   async findAll(auth: AuthEntity) {
-    const unity = await this.unityService.findOne(auth.unity_id);
+    const unity = await this.unityService.findOne(auth.unityId);
 
     const students = (await googleSheets({
       spreadsheetId: unity.spreedsheetId,

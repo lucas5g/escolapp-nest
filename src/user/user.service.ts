@@ -11,7 +11,7 @@ export class UserService {
   private select = {
     id: true,
     email: true,
-    unity_id: true,
+    unityId: true,
     profile: true,
   };
 
@@ -30,7 +30,7 @@ export class UserService {
   findAll(auth: AuthEntity, findUserDto?: FindUserDto) {
     return this.prisma.user.findMany({
       where: {
-        unity_id: auth.unity_id,
+        unityId: auth.unityId,
         ...findUserDto,
       },
       select: this.select,
@@ -54,12 +54,12 @@ export class UserService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-
     return this.prisma.user.update({
       where: { id },
       data: {
         ...updateUserDto,
-        password: updateUserDto.password && await hash(updateUserDto.password, 12)
+        password:
+          updateUserDto.password && (await hash(updateUserDto.password, 12)),
       },
       select: this.select,
     });

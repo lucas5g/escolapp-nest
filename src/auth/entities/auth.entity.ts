@@ -1,6 +1,8 @@
+import { Profile } from '@prisma/client';
+
 export class AuthEntity {
   id: number;
   email: string;
-  profile: string;
-  unity_id: number;
+  profile: Profile;
+  unityId: number;
 }

@@ -1,15 +1,15 @@
-import { Game, Modality, Prisma, Team, Unity, User } from "@prisma/client"
+import { Modality, Team, Unity, User } from "@prisma/client"
 
-export const unities:Unity[] = [
+export const unities: Unity[] = [
   {
     id: 1,
     name: 'Belo Horizonte',
-    spreedsheetId: 'id planilha'
+    spreedsheetId: 'id planilha',
   },
   {
-    id:2,
+    id: 2,
     name: 'Contagem',
-    spreedsheetId:process.env.SPREAD_SHEET_ID
+    spreedsheetId: process.env.SPREAD_SHEET_ID,
   }
 ]
 export const modalities: Modality[] = [
@@ -18,7 +18,7 @@ export const modalities: Modality[] = [
     name: 'Fut test',
     members_quantity: 2,
     teams_quantity: 2,
-    unity_id: 1,
+    unityId: 1,
     type: 'collective'
 
   }
@@ -29,21 +29,21 @@ export const users: User[] = [
     id: 1,
     email: 'test@mail.com',
     password: 'qweqwe',
-    unity_id: 1,
+    unityId: 1,
     profile: 'admin'
   },
   {
     id: 2,
     email: 'admin@mail.com',
     password: 'qweqwe',
-    unity_id: 1,
+    unityId: 1,
     profile: 'admin'
   },
   {
     id: 3,
     email: 'mediador@mail.com',
     password: 'qweqwe',
-    unity_id: 1,
+    unityId: 1,
     profile: 'judge'
   }
 ]
@@ -52,7 +52,7 @@ export const places = [
   {
     id: 1,
     name: 'place-test',
-    unity_id: 1
+    unityId: 1
   }
 ]
 
@@ -63,7 +63,7 @@ export const teams: Team[] = [
     "group": "group-test",
     "genre": "misto",
     "modality_id": 1,
-    "unity_id": 1,
+    "unityId": 1,
     "students": ["C123123", "C321321"]
   },
   {
@@ -72,7 +72,7 @@ export const teams: Team[] = [
     "group": "group-test",
     "genre": "misto",
     "modality_id": 1,
-    "unity_id": 1,
+    "unityId": 1,
     "students": ["C123123", "C321321"]
   }
 ]
@@ -100,7 +100,7 @@ export const games = [
     place_id: 1,
     modality_id: 1,
     user_id: 1,
-    unity_id: 1,
+    unityId: 1,
 
 
   }

@@ -25,7 +25,7 @@ export class AuthService {
     delete user.password;
 
     const accessToken = await this.createAccessToken(user);
-    
+
     return { accessToken };
   }
 
