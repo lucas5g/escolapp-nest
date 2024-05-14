@@ -53,10 +53,14 @@ export class UserService {
     });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  async update(id: number, updateUserDto: UpdateUserDto) {
+
     return this.prisma.user.update({
       where: { id },
-      data: updateUserDto,
+      data: {
+        ...updateUserDto,
+        password: updateUserDto.password && await hash(updateUserDto.password, 12)
+      },
       select: this.select,
     });
   }

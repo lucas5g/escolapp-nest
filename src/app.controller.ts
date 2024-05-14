@@ -9,7 +9,6 @@ import { AppService } from './app.service';
 import { Public } from './auth/decorators/public.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerConfig, validation } from './utils/multer-config';
-import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
 @Controller()
 export class AppController {

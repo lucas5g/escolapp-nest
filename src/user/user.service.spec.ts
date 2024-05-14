@@ -3,16 +3,25 @@ import { UserService } from './user.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
 import { AuthEntity } from '../auth/entities/auth.entity';
+import { UpdateUserDto } from 'src/user/dto/update-user.dto';
+import { AuthService } from 'src/auth/auth.service';
+import { JwtService } from '@nestjs/jwt';
 
 describe('UserService', () => {
   let service: UserService;
+  let serviceAuth: AuthService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [UserService, PrismaService],
     }).compile();
 
+    const moduleAuth: TestingModule = await Test.createTestingModule({
+      providers: [AuthService, PrismaService, UserService, JwtService]
+    }).compile()
+
     service = module.get<UserService>(UserService);
+    serviceAuth = moduleAuth.get<AuthService>(AuthService)
   });
 
   it('create', async () => {
@@ -61,4 +70,18 @@ describe('UserService', () => {
     expect(result).toMatchObject(data);
     expect(result).not.toHaveProperty('password');
   });
+
+  it('update password and login', async () => {
+    const data: UpdateUserDto = {
+      email:'test@mail.com',
+      password: 'qweqwe',
+    }
+
+    await service.update(1, data)
+
+    const auth = await serviceAuth.login({email:'test@mail.com', password:'qweqwe'})
+
+    expect(auth).toBe
+
+  })
 });
