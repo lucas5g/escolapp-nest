@@ -13,7 +13,7 @@ import { UpdateSetupDto } from './dto/update-setup.dto';
 import { Auth } from '@/auth/decorators/auth.decorator';
 import { AuthEntity } from '@/auth/entities/auth.entity';
 
-@Controller('setup')
+@Controller('setups')
 export class SetupController {
   constructor(private readonly setupService: SetupService) {}
 
