@@ -44,12 +44,12 @@ enum Type {
 }
 
 model Modality {
-  id               Int    @id @default(autoincrement())
-  name             String
-  type             Type
-  members_quantity Int
-  teams_quantity   Int
-  unityId          Int?
+  id              Int    @id @default(autoincrement())
+  name            String
+  type            Type
+  membersQuantity Int
+  teamsQuantity   Int
+  unityId         Int?
 
   unity Unity? @relation(fields: [unityId], references: [id])
   games Game[]
@@ -88,15 +88,15 @@ enum Genre {
 }
 
 model Team {
-  id          Int    @id @default(autoincrement())
-  name        String
-  group       String
-  genre       Genre
-  modality_id Int?
-  unityId     Int?
-  students    Json
+  id         Int    @id @default(autoincrement())
+  name       String
+  group      String
+  genre      Genre
+  modalityId Int?
+  unityId    Int?
+  students   Json
 
-  modality Modality? @relation(fields: [modality_id], references: [id])
+  modality Modality? @relation(fields: [modalityId], references: [id])
   unity    Unity?    @relation(fields: [unityId], references: [id])
 
   @@map("teams")

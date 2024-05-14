@@ -11,17 +11,17 @@ export class CreateModalityDto {
   @ApiProperty()
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
-  unity_id: number;
+  unityId: number;
 
   @ApiProperty()
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
-  members_quantity: number;
+  membersQuantity: number;
 
   @ApiProperty()
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
-  teams_quantity: number;
+  teamsQuantity: number;
 
   @IsEnum(Type)
   type: Type;

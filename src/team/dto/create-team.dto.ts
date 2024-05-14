@@ -12,10 +12,10 @@ export class CreateTeamDto {
   genre: Genre;
 
   @IsNumber()
-  modality_id: number;
+  modalityId: number;
 
   @IsNumber()
-  unity_id: number;
+  unityId: number;
 
   @IsArray()
   students: string[];

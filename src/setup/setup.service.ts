@@ -22,11 +22,16 @@ export class SetupService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} setup`;
+    return this.prisma.setup.findUniqueOrThrow({
+      where: { id },
+    });
   }
 
   update(id: number, updateSetupDto: UpdateSetupDto) {
-    return `This action updates a #${id} setup`;
+    return this.prisma.setup.update({
+      where: { id },
+      data: updateSetupDto,
+    });
   }
 
   remove(id: number) {

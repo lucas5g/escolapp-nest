@@ -1,8 +1,8 @@
+import { GameService } from '@/game/game.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { auth } from '@/utils/test';
 import { Test, TestingModule } from '@nestjs/testing';
-import { GameService } from './game.service';
 import { Game } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('GameService', () => {
   let service: GameService;
@@ -34,10 +34,10 @@ describe('GameService', () => {
       startHours: '08:00',
       endHours: '09:00',
       teams: String(teams),
-      modality_id: 1,
-      place_id: 1,
-      user_id: 1,
-      unity_id: 1,
+      modalityId: 1,
+      placeId: 1,
+      userId: 1,
+      unityId: 1,
     };
     const result = await service.create(data);
 
@@ -47,9 +47,6 @@ describe('GameService', () => {
   }, 7000);
 
   it('Find All', async () => {
-    const auth = {
-      unity_id: 1,
-    } as AuthEntity;
     const result = await service.findAll(auth);
 
     testList(result[0]);

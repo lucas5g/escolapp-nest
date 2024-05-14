@@ -7,5 +7,5 @@ export class CreatePlaceDto {
 
   @IsNotEmpty()
   @Transform(({ value }) => Number(value))
-  unity_id: number;
+  unityId: number;
 }

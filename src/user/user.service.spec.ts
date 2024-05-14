@@ -1,15 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserService } from './user.service';
-import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
-import { AuthEntity } from '../auth/entities/auth.entity';
-import { UpdateUserDto } from 'src/user/dto/update-user.dto';
-import { AuthService } from 'src/auth/auth.service';
 import { JwtService } from '@nestjs/jwt';
+import { UserService } from '@/user/user.service';
+import { AuthService } from '@/auth/auth.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { auth } from '@/utils/test';
+import { UpdateUserDto } from '@/user/dto/update-user.dto';
 
 describe('UserService', () => {
   let service: UserService;
   let serviceAuth: AuthService;
+  const properties = ['id', 'email', 'unityId', 'profile'];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -28,7 +29,7 @@ describe('UserService', () => {
     const data = {
       email: `test${new Date().getMinutes()}@mail.com`,
       password: 'qweqwe',
-      unity_id: 1,
+      unityId: 1,
       profile: 'admin',
     } as User;
 
@@ -41,24 +42,16 @@ describe('UserService', () => {
   });
 
   it('find all', async () => {
-    const auth = {
-      unity_id: 1,
-    } as AuthEntity;
     const result = await service.findAll(auth);
-    result.forEach((row) => {
-      expect(row).not.toHaveProperty('password');
-      expect(row).toHaveProperty('id');
-      expect(row).toHaveProperty('email');
-      expect(row).toHaveProperty('unity_id');
-    });
+
+    for (const row of result) {
+      expect(Object.keys(row)).toEqual(properties);
+    }
   }, 5000);
 
   it('find one', async () => {
     const result = await service.findOne(1);
-    expect(result).not.toHaveProperty('password');
-    expect(result).toHaveProperty('id');
-    expect(result).toHaveProperty('email');
-    expect(result).toHaveProperty('unity_id');
+    expect(Object.keys(result)).toEqual(properties);
   });
 
   it('update', async () => {

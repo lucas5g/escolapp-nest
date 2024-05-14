@@ -1,7 +1,7 @@
+import { AuthEntity } from '@/auth/entities/auth.entity';
+import { UnityService } from '@/unity/unity.service';
+import { googleSheets } from '@/utils/google-sheets';
 import { Injectable } from '@nestjs/common';
-import { googleSheets } from '../utils/google-sheets';
-import { AuthEntity } from '../auth/entities/auth.entity';
-import { UnityService } from '../unity/unity.service';
 
 @Injectable()
 export class StudentService {

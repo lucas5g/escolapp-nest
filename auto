@@ -5,8 +5,17 @@ if [[ $@ =~ "push" ]]; then
 
   npm run lint 
 
+  if [ "$?" != 0 ]; then 
+    echo "Erro no lint"
+    exit 
+  fi
+
   npm run test
 
+  if [ "$?" != 0 ]; then 
+    echo "Erro nos tests"
+    exit 
+  fi
 
   git add .
   git commit -m "$2"

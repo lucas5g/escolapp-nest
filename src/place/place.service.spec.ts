@@ -1,11 +1,11 @@
+import { PlaceService } from '@/place/place.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { auth } from '@/utils/test';
 import { Test, TestingModule } from '@nestjs/testing';
-import { PlaceService } from './place.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { AuthEntity } from '../auth/entities/auth.entity';
 
 describe('PlaceService', () => {
   let service: PlaceService;
-
+  const properties = ['id', 'name', 'unityId'];
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [PlaceService, PrismaService],
@@ -17,7 +17,7 @@ describe('PlaceService', () => {
   it('Create', async () => {
     const data = {
       name: 'name',
-      unity_id: 1,
+      unityId: 1,
     };
     const result = await service.create(data);
     expect(result).toMatchObject(data);
@@ -26,21 +26,17 @@ describe('PlaceService', () => {
   }, 6000);
 
   it('Find All', async () => {
-    const auth = {
-      unity_id: 1,
-    } as AuthEntity;
     const result = await service.findAll(auth);
     expect(result.length).toBeGreaterThan(0);
 
-    result.forEach((row) => {
-      expect(row).toHaveProperty('name');
-      expect(row).toHaveProperty('unity_id');
-    });
+    for (const row of result) {
+      expect(Object.keys(row)).toEqual(properties);
+    }
   });
 
   it('Find One', async () => {
     const result = await service.findOne(1);
-    expect(result).toHaveProperty('name');
+    expect(Object.keys(result)).toEqual(properties);
   });
 
   it('Update', async () => {

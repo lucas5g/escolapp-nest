@@ -36,13 +36,13 @@ export class CreateGameDto {
   comments?: string;
 
   @IsInt()
-  place_id: number;
+  placeId: number;
 
   @IsNotEmpty()
-  modality_id: number;
+  modalityId: number;
 
   @IsNotEmpty()
-  user_id: number;
+  userId: number;
 
   @ValidateNested({ each: true })
   @IsArray()
@@ -50,5 +50,5 @@ export class CreateGameDto {
   teams: string;
 
   @IsInt()
-  unity_id: number;
+  unityId: number;
 }

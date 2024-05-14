@@ -1,10 +1,10 @@
+import { AuthEntity } from '@/auth/entities/auth.entity';
+import { PrismaService } from '@/prisma/prisma.service';
+import { CreateUserDto } from '@/user/dto/create-user.dto';
+import { FindUserDto } from '@/user/dto/find-user.dto';
+import { UpdateUserDto } from '@/user/dto/update-user.dto';
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { PrismaService } from '../prisma/prisma.service';
 import { hash } from 'bcrypt';
-import { AuthEntity } from '../auth/entities/auth.entity';
-import { FindUserDto } from './dto/find-user.dto';
 
 @Injectable()
 export class UserService {

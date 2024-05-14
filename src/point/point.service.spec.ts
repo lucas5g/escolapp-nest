@@ -1,12 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PointService } from './point.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { GroupService } from '../group/group.service';
-import { UnityService } from '../unity/unity.service';
-import { AuthEntity } from '../auth/entities/auth.entity';
+
+import { auth } from '@/utils/test';
+import { PointService } from '@/point/point.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { GroupService } from '@/group/group.service';
+import { UnityService } from '@/unity/unity.service';
 
 describe('PointService', () => {
   let service: PointService;
+  const properties = ['id', 'name', 'totalPoints'];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -17,13 +19,10 @@ describe('PointService', () => {
   });
 
   it('Find All', async () => {
-    const auth = {
-      unity_id: 1,
-    } as AuthEntity;
     const result = await service.findAll(auth);
 
-    ['name', 'totalPoints'].forEach((property) => {
-      expect(result[0]).toHaveProperty(property);
-    });
+    for (const row of result) {
+      expect(Object.keys(row)).toEqual(properties);
+    }
   }, 6000);
 });

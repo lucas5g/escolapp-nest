@@ -1,9 +1,9 @@
+import { GroupService } from '@/group/group.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { UnityService } from '@/unity/unity.service';
+import { auth } from '@/utils/test';
 import { Test, TestingModule } from '@nestjs/testing';
-import { GroupService } from './group.service';
 import 'dotenv/config';
-import { AuthEntity } from '../auth/entities/auth.entity';
-import { UnityService } from '../unity/unity.service';
-import { PrismaService } from '../prisma/prisma.service';
 
 describe('GroupService', () => {
   let service: GroupService;
@@ -17,10 +17,7 @@ describe('GroupService', () => {
   });
 
   it('Find All', async () => {
-    const find = {
-      unity_id: 2,
-    } as AuthEntity;
-    const result = await service.findAll(find);
+    const result = await service.findAll(auth);
     expect(result.length).toBeGreaterThan(0);
     result.forEach((row) => {
       expect(row).toHaveProperty('name');

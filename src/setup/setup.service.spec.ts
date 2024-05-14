@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreateSetupDto } from '@/setup/dto/create-setup.dto';
 import { SetupService } from '@/setup/setup.service';
 import { PrismaService } from '@/prisma/prisma.service';
-import { AuthEntity } from '@/auth/entities/auth.entity';
 import { auth } from '@/utils/test';
 
 describe('SetupService', () => {
@@ -37,5 +36,11 @@ describe('SetupService', () => {
     for (const row of res) {
       expect(Object.keys(row)).toEqual(properties);
     }
+  });
+
+  it('find one', async () => {
+    const res = await service.findOne(1);
+
+    expect(Object.keys(res)).toEqual(properties);
   });
 });

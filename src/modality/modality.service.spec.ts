@@ -1,12 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ModalityService } from './modality.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { Modality } from '@prisma/client';
-import { AuthEntity } from '../auth/entities/auth.entity';
+import { CreateModalityDto } from '@/modality/dto/create-modality.dto';
+import { ModalityService } from '@/modality/modality.service';
+import { PrismaService } from '@/prisma/prisma.service';
+import { auth } from '@/utils/test';
 
 describe('ModalityService', () => {
   let service: ModalityService;
-
+  const properties = [
+    'id',
+    'name',
+    'type',
+    'membersQuantity',
+    'teamsQuantity',
+    'unityId',
+  ];
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [ModalityService, PrismaService],
@@ -16,41 +23,33 @@ describe('ModalityService', () => {
   });
 
   it('Create', async () => {
-    const data = {
+    const data: CreateModalityDto = {
       name: 'name',
-      unity_id: 1,
-      members_quantity: 10,
-      teams_quantity: 20,
+      unityId: 1,
+      membersQuantity: 10,
+      teamsQuantity: 20,
       type: 'collective',
-    } as Modality;
+    };
 
     const result = await service.create(data);
     expect(result).toMatchObject(data);
 
-    service.remove(result.id);
+    await service.remove(result.id);
   }, 5000);
 
   it('Find All', async () => {
-    const auth = {
-      unity_id: 1,
-    } as AuthEntity;
     const result = await service.findAll(auth);
-    expect(result.length).toBeGreaterThan(1);
+    expect(result.length).toBeGreaterThanOrEqual(1);
 
-    result.forEach((row) => {
-      expect(row).toHaveProperty('name');
-      expect(row).toHaveProperty('unity_id');
-      expect(row).toHaveProperty('members_quantity');
-      expect(row).toHaveProperty('teams_quantity');
-    });
+    for (const row of result) {
+      expect(Object.keys(row)).toEqual(properties);
+    }
   });
 
   it('Find One', async () => {
     const result = await service.findOne(1);
-    expect(result).toHaveProperty('name');
-    expect(result).toHaveProperty('unity_id');
-    expect(result).toHaveProperty('members_quantity');
-    expect(result).toHaveProperty('teams_quantity');
+
+    expect(Object.keys(result)).toEqual(properties);
   });
 
   it('Update', async () => {

@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from './auth.service';
-import { UserService } from '../user/user.service';
-import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { jwtDecode } from 'jwt-decode';
+import { AuthService } from '@/auth/auth.service';
+import { UserService } from '@/user/user.service';
+import { PrismaService } from '@/prisma/prisma.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -27,9 +27,12 @@ describe('AuthService', () => {
 
     expect(result).toHaveProperty('accessToken');
 
-    ['unity_id'].forEach((property) => {
-      expect(decoded).toHaveProperty(property);
-    });
-    expect(decoded).not.toHaveProperty('password');
-  }, 5000);
+    expect(Object.keys(decoded)).toEqual([
+      'id',
+      'email',
+      'profile',
+      'unityId',
+      'iat',
+    ]);
+  });
 });

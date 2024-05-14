@@ -1,10 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TeamService } from './team.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { AuthEntity } from '../auth/entities/auth.entity';
+
+import { auth } from '@/utils/test';
+import { TeamService } from '@/team/team.service';
+import { PrismaService } from '@/prisma/prisma.service';
 
 describe('TeamService', () => {
   let service: TeamService;
+  const properties = [
+    'id',
+    'name',
+    'group',
+    'genre',
+    'modalityId',
+    'unityId',
+    'students',
+  ];
+
   enum genre {
     misto = 'misto',
     mas = 'mas',
@@ -22,10 +33,10 @@ describe('TeamService', () => {
   it('Create', async () => {
     const data = {
       name: 'team-test',
-      modality_id: 1,
+      modalityId: 1,
       group: 'group-test',
       genre: genre['misto'],
-      unity_id: 1,
+      unityId: 1,
       students: ['C123123', 'C321321'],
     };
 
@@ -37,35 +48,25 @@ describe('TeamService', () => {
   }, 5000);
 
   it('Find All', async () => {
-    const auth = {
-      unity_id: 1,
-    } as AuthEntity;
     const result = await service.findAll(auth);
     result.forEach((row) => {
-      expect(row).toHaveProperty('name');
-      expect(row).toHaveProperty('group');
-      expect(row).toHaveProperty('genre');
-      expect(row).toHaveProperty('modality_id');
-      expect(row).toHaveProperty('unity_id');
+      1;
+      expect(Object.keys(row)).toEqual(properties);
     });
   }, 5000);
 
   it('Find One', async () => {
     const result = await service.findOne(1);
-    expect(result).toHaveProperty('name');
-    expect(result).toHaveProperty('group');
-    expect(result).toHaveProperty('genre');
-    expect(result).toHaveProperty('modality_id');
-    expect(result).toHaveProperty('unity_id');
+    expect(Object.keys(result)).toEqual(properties);
   }, 6000);
 
   it('Update', async () => {
     const data = {
       name: `team-test_${new Date().getMinutes()}`,
-      modality_id: 1,
+      modalityId: 1,
       group: 'group-test',
       genre: genre['misto'],
-      unity_id: 1,
+      unityId: 2,
       students: ['C123123', 'C321321'],
     };
 

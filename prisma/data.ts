@@ -16,9 +16,9 @@ export const modalities: Modality[] = [
   {
     id: 1,
     name: 'Fut test',
-    members_quantity: 2,
-    teams_quantity: 2,
-    unityId: 1,
+    membersQuantity: 2,
+    teamsQuantity: 2,
+    unityId: 2,
     type: 'collective'
 
   }
@@ -52,7 +52,7 @@ export const places = [
   {
     id: 1,
     name: 'place-test',
-    unityId: 1
+    unityId: 2
   }
 ]
 
@@ -62,8 +62,8 @@ export const teams: Team[] = [
     "name": "team test 1",
     "group": "group-test",
     "genre": "misto",
-    "modality_id": 1,
-    "unityId": 1,
+    "modalityId": 1,
+    "unityId": 2,
     "students": ["C123123", "C321321"]
   },
   {
@@ -71,8 +71,8 @@ export const teams: Team[] = [
     "name": "team test 2",
     "group": "group-test",
     "genre": "misto",
-    "modality_id": 1,
-    "unityId": 1,
+    "modalityId": 1,
+    "unityId": 2,
     "students": ["C123123", "C321321"]
   }
 ]
@@ -85,22 +85,22 @@ export const games = [
     endHours: '09:00',
     teams: [
       {
-        "id": 288,
+        "id": 1,
         "goals": 3,
         "points": 4,
         "fairPlay": 1
       },
       {
-        "id": 311,
+        "id": 2,
         "goals": 1,
         "points": 2,
         "fairPlay": 1
       }
     ],
-    place_id: 1,
-    modality_id: 1,
-    user_id: 1,
-    unityId: 1,
+    placeId: 1,
+    modalityId: 1,
+    userId: 1,
+    unityId: 2,
 
 
   }
