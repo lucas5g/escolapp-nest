@@ -14,7 +14,7 @@ describe('TeamService', () => {
     'modalityId',
     'unityId',
     'students',
-    'modality'
+    'modality',
   ];
 
   enum genre {
@@ -51,16 +51,17 @@ describe('TeamService', () => {
   it('Find All', async () => {
     const res = await service.findAll(auth);
 
-    for(const row of res){
+    for (const row of res) {
       expect(Object.keys(row)).toEqual(properties);
-      expect(row.modality).toHaveProperty('name')
+      expect(row.modality).toHaveProperty('name');
     }
-    
   }, 5000);
 
   it('Find One', async () => {
     const result = await service.findOne(1);
-    expect(Object.keys(result)).toEqual(properties.filter(property => property !== 'modality'));
+    expect(Object.keys(result)).toEqual(
+      properties.filter((property) => property !== 'modality'),
+    );
   }, 6000);
 
   it('Update', async () => {

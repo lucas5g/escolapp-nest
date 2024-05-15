@@ -3,9 +3,9 @@ import * as brcypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '@/user/user.service';
 import { LoginAuthDto } from '@/auth/dto/login-auth.dto';
-import { UpdateUserDto } from '@/user/dto/update-user.dto';
 import { AuthEntity } from '@/auth/entities/auth.entity';
 import { env } from '@/utils/env';
+import { UpdateMeAuthDto } from '@/auth/dto/update-me-auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -29,8 +29,8 @@ export class AuthService {
     return { accessToken };
   }
 
-  async update(updateUserDto: UpdateUserDto, auth: AuthEntity) {
-    const user = await this.userService.update(auth.id, updateUserDto);
+  async update(updateMeAuthDto: UpdateMeAuthDto, auth: AuthEntity) {
+    const user = await this.userService.update(auth.id, updateMeAuthDto);
     const accessToken = await this.createAccessToken(user);
 
     return { accessToken };

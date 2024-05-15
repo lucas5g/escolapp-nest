@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '@/auth/auth.service';
 import { UserService } from '@/user/user.service';
 import { PrismaService } from '@/prisma/prisma.service';
+import { auth } from '@/utils/test';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -34,5 +35,10 @@ describe('AuthService', () => {
       'unityId',
       'iat',
     ]);
+  });
+
+  it('update', async () => {
+    const res = await service.update({ password: 'qweqwe' }, auth);
+    expect(res).toHaveProperty('accessToken');
   });
 });

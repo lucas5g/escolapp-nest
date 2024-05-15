@@ -18,9 +18,9 @@ export class PlaceService {
       where: {
         unityId: auth.unityId,
       },
-      orderBy:{
-        name:'asc'
-      }
+      orderBy: {
+        name: 'asc',
+      },
     });
   }
 

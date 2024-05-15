@@ -17,9 +17,9 @@ export class TeamService {
   findAll({ unityId }: AuthEntity) {
     return this.prisma.team.findMany({
       where: { unityId },
-      include:{
-        modality:true
-      }
+      include: {
+        modality: true,
+      },
     });
   }
 

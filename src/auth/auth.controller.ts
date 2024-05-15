@@ -8,13 +8,12 @@ import {
   Request,
   Patch,
 } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { LoginAuthDto } from './dto/login-auth.dto';
-
-import { Public } from './decorators/public.decorator';
-import { UpdateUserDto } from '../user/dto/update-user.dto';
-import { AuthEntity } from './entities/auth.entity';
-import { Auth } from './decorators/auth.decorator';
+import { UpdateMeAuthDto } from '@/auth/dto/update-me-auth.dto';
+import { AuthService } from '@/auth/auth.service';
+import { Public } from '@/auth/decorators/public.decorator';
+import { LoginAuthDto } from '@/auth/dto/login-auth.dto';
+import { Auth } from '@/auth/decorators/auth.decorator';
+import { AuthEntity } from '@/auth/entities/auth.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -33,7 +32,7 @@ export class AuthController {
   }
 
   @Patch('me')
-  updateMe(@Body() updateUserDto: UpdateUserDto, @Auth() auth: AuthEntity) {
-    return this.authService.update(updateUserDto, auth);
+  updateMe(@Body() updateMeAuthDto: UpdateMeAuthDto, @Auth() auth: AuthEntity) {
+    return this.authService.update(updateMeAuthDto, auth);
   }
 }
