@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { games, modalities, places, teams, unities, users } from "./data";
+import { games, modalities, places, setups, teams, unities, users } from "./data";
 import { setTimeout } from "timers/promises";
 import { hash } from "bcrypt";
 
@@ -57,6 +57,14 @@ async function main() {
       update:game
     })
   })
+
+  for(const setup of setups){
+    await prisma.setup.upsert({
+      where:{id: setup.id},
+      update: setup, 
+      create: setup
+    })
+  }
 }
 
 main()

@@ -1,5 +1,5 @@
-import { Modality, Team, Unity, User } from "@prisma/client"
-
+import { Modality, Setup, Team, Unity, User } from "@prisma/client"
+import { format } from 'date-fns'
 export const unities: Unity[] = [
   {
     id: 1,
@@ -80,7 +80,7 @@ export const teams: Team[] = [
 export const games = [
   {
     id: 1,
-    date: new Date(),
+    date: format(new Date(), 'yyyy-MM-dd'),
     startHours: '08:00',
     endHours: '09:00',
     teams: [
@@ -103,5 +103,13 @@ export const games = [
     unityId: 2,
 
 
+  }
+]
+
+export const setups:Setup[] = [
+  {
+    id:1,
+    documentLink:'some-id',
+    unityId:2
   }
 ]

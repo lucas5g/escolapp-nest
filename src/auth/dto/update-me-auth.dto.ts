@@ -4,5 +4,4 @@ import { OmitType } from '@nestjs/mapped-types';
 export class UpdateMeAuthDto extends OmitType(UpdateUserDto, [
   'email',
   'profile',
-  'unityId',
 ]) {}

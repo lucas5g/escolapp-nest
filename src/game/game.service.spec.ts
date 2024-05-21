@@ -3,7 +3,7 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { auth } from '@/utils/test';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Game } from '@prisma/client';
-
+import { format } from 'date-fns';
 describe('GameService', () => {
   let service: GameService;
 
@@ -30,7 +30,7 @@ describe('GameService', () => {
     ];
 
     const data = {
-      date: new Date(),
+      date: format(new Date(), 'yyyy-MM-dd'),
       startHours: '08:00',
       endHours: '09:00',
       teams: String(teams),

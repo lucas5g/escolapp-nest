@@ -1,4 +1,4 @@
-import { Transform, Type } from 'class-transformer';
+import { Type } from 'class-transformer';
 import {
   IsArray,
   IsInt,
@@ -23,8 +23,7 @@ class TeamDto {
 
 export class CreateGameDto {
   @IsNotEmpty()
-  @Transform(({ value }) => new Date(value))
-  date: Date;
+  date: string;
 
   @IsNotEmpty()
   startHours: string;

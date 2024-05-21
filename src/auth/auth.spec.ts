@@ -5,6 +5,7 @@ import { AuthService } from '@/auth/auth.service';
 import { UserService } from '@/user/user.service';
 import { PrismaService } from '@/prisma/prisma.service';
 import { auth } from '@/utils/test';
+import request from 'supertest';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -40,5 +41,12 @@ describe('AuthService', () => {
   it('update', async () => {
     const res = await service.update({ password: 'qweqwe' }, auth);
     expect(res).toHaveProperty('accessToken');
+  });
+});
+
+describe('Auth (e2e)', () => {
+  it('/auth/me (PATCH)', async () => {
+    const res = await request('http://localhost:8000').patch('auth/me');
+    console.log(res.body);
   });
 });
