@@ -15,7 +15,6 @@ export class PrismaExceptionFilter implements ExceptionFilter {
     }
 
     if (exception.code === 'P2003') {
-      console.log('error code');
       return response.status(422).json({
         message: translate(
           `${String(exception.meta.field_name)} não cadastrado`,

@@ -1,3 +1,4 @@
+import { env } from "@/utils/env"
 import { Modality, Setup, Team, Unity, User } from "@prisma/client"
 import { format } from 'date-fns'
 export const unities: Unity[] = [
@@ -9,7 +10,12 @@ export const unities: Unity[] = [
   {
     id: 2,
     name: 'Contagem',
-    spreedsheetId: process.env.SPREAD_SHEET_ID,
+    spreedsheetId: env.spreadSheetId,
+  },
+  {
+    id: 3,
+    name: 'outra  unidade',
+    spreedsheetId: 'id',
   }
 ]
 export const modalities: Modality[] = [
