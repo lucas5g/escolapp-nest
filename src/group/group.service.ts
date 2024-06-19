@@ -17,12 +17,14 @@ export class GroupService {
       quantidade: number;
     }[];
 
-    return groups.map((group) => {
-      return {
-        id: group.turma,
-        name: group.turma,
-        quantity: group.quantidade,
-      };
-    });
+    return groups
+      .map((group) => {
+        return {
+          id: group.turma,
+          name: group.turma,
+          quantity: group.quantidade,
+        };
+      })
+      .filter((group) => !!group.id);
   }
 }

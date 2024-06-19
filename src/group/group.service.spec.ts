@@ -7,6 +7,7 @@ import 'dotenv/config';
 
 describe('GroupService', () => {
   let service: GroupService;
+  const properties = ['id', 'name', 'quantity'];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -17,11 +18,12 @@ describe('GroupService', () => {
   });
 
   it('Find All', async () => {
-    const result = await service.findAll(auth);
-    expect(result.length).toBeGreaterThan(0);
-    result.forEach((row) => {
-      expect(row).toHaveProperty('name');
-      expect(row).toHaveProperty('quantity');
+    const res = await service.findAll(auth);
+    expect(res.length).toBeGreaterThan(0);
+
+    res.forEach((row) => {
+      expect(Object.keys(row)).toEqual(properties);
+      expect(row.id).not.toEqual(0);
     });
   }, 5000);
 });
