@@ -6,16 +6,23 @@ export const unities: Unity[] = [
     id: 1,
     name: 'Belo Horizonte',
     spreedsheetId: 'id planilha',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    
   },
   {
     id: 2,
     name: 'Contagem',
     spreedsheetId: env.spreadSheetId,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 3,
     name: 'outra  unidade',
     spreedsheetId: 'id',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   }
 ]
 export const modalities: Modality[] = [

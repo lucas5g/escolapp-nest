@@ -17,7 +17,10 @@ export class GameService {
 
   findAll({ unityId }: AuthEntity, findGameDto?: FindGameDto) {
     return this.prisma.game.findMany({
-      where: { unityId, ...findGameDto },
+      where: {
+        unityId,
+        ...findGameDto,
+      },
       orderBy: {
         date: 'asc',
       },

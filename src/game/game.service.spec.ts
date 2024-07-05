@@ -85,11 +85,12 @@ describe('GameService', () => {
 
   it('find all by userId', async () => {
     const data: FindGameDto = {
-      userId: 2,
-      date: '2024-06-19',
+      userId: 105,
+      date: '2024-07-08 03:00:00.000',
     };
+
     const result = await service.findAll(auth, data);
 
-    expect(result).toEqual([]);
+    expect(result.length).toEqual(6);
   });
 });
