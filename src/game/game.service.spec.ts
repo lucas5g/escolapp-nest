@@ -1,11 +1,26 @@
+import { FindGameDto } from '@/game/dto/find-game.dto';
 import { GameService } from '@/game/game.service';
 import { PrismaService } from '@/prisma/prisma.service';
 import { auth } from '@/utils/test';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Game } from '@prisma/client';
 import { format } from 'date-fns';
 describe('GameService', () => {
   let service: GameService;
+
+  const properties = [
+    'id',
+    'date',
+    'startHours',
+    'endHours',
+    'comments',
+    'teams',
+    'placeId',
+    'modalityId',
+    'userId',
+    'unityId',
+    'createdAt',
+    'updatedAt',
+  ];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -49,12 +64,14 @@ describe('GameService', () => {
   it('Find All', async () => {
     const result = await service.findAll(auth);
 
-    testList(result[0]);
+    result.forEach((res) => {
+      expect(Object.keys(res)).toEqual(properties);
+    });
   }, 5000);
 
   it('Find One', async () => {
     const result = await service.findOne(1);
-    testList(result);
+    expect(Object.keys(result)).toEqual(properties);
   });
 
   it('Update', async () => {
@@ -65,10 +82,14 @@ describe('GameService', () => {
 
     expect(result).toMatchObject(data);
   });
-});
 
-function testList(result: Game) {
-  ['date', 'teams'].forEach((property) => {
-    expect(result).toHaveProperty(property);
+  it('find all by userId', async () => {
+    const data: FindGameDto = {
+      userId: 2,
+      date: '2024-06-19',
+    };
+    const result = await service.findAll(auth, data);
+
+    expect(result).toEqual([]);
   });
-}
+});

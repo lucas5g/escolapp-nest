@@ -1,8 +1,8 @@
-import { Transform } from 'class-transformer';
-import { IsNotEmpty } from 'class-validator';
-
+import { Type } from 'class-transformer';
 export class FindGameDto {
-  @IsNotEmpty()
-  @Transform(({ value }) => Number(value))
-  unity_id: number;
+  @Type(() => Number)
+  userId: number;
+
+  @Type(() => Date)
+  date: string;
 }
