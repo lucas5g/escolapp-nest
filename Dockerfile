@@ -2,21 +2,23 @@
 FROM node:22
 
 # Create app directory
-#WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-#COPY package*.json ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
-RUN npm run build 
+
+# Copy the rest of the app source
+COPY . .
+
+# Build the app
+RUN npm run build
 RUN npx prisma generate
 
-# Bundle app source
-#COPY . .
-
-# Start the server using the production build
-CMD [ "npm", "run", "start" ]
-
-# Exposing server port
+# Expose port
 EXPOSE 8000
+
+# Start the server
+CMD [ "npm", "run", "start" ]
