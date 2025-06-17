@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
+ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=1
 
 # Install app dependencies
 RUN npm install
