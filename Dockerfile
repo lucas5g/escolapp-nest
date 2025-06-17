@@ -14,8 +14,9 @@ RUN npm install
 COPY . .
 
 # Build the app
-RUN npm run build
 RUN npx prisma generate
+RUN npm run build
+
 
 # Expose port
 EXPOSE 8000
