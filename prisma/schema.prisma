@@ -106,7 +106,7 @@ model Team {
 
 model Game {
   id         Int     @id @default(autoincrement())
-  date       String
+  date       DateTime
   startHours String
   endHours   String
   comments   String?

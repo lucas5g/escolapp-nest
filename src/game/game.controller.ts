@@ -26,7 +26,6 @@ export class GameController {
 
   @Get()
   findAll(@Auth() auth: AuthEntity, @Query() findGameDto: FindGameDto) {
-    console.log(findGameDto);
     return this.gameService.findAll(auth, findGameDto);
   }
 
