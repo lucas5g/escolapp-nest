@@ -5,17 +5,17 @@ FROM node:22
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
-COPY package*.json ./
-ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=1
+COPY . .
+# ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=1
 
 # Install app dependencies
 RUN npm install
 
 # Copy the rest of the app source
-COPY . .
+# COPY . .
 
 # Build the app
-RUN npx prisma generate
+# RUN npx prisma generate
 RUN npm run build
 
 
