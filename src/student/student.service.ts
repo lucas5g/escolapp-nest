@@ -2,6 +2,7 @@ import { AuthEntity } from '@/auth/entities/auth.entity';
 import { UnityService } from '@/unity/unity.service';
 import { googleSheets } from '@/utils/google-sheets';
 import { Injectable } from '@nestjs/common';
+import { Student } from './entities/student.entity';
 
 @Injectable()
 export class StudentService {
@@ -28,6 +29,7 @@ export class StudentService {
           group: student.turma,
         };
       })
+      .filter(student => student.ra !== undefined)
       .sort((a, b) => a.name?.localeCompare(b.name));
   }
 }

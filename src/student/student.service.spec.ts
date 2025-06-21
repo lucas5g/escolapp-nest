@@ -18,10 +18,12 @@ describe('StudentService', () => {
 
   it('Find All', async () => {
     const result = await service.findAll(auth);
+
     expect(result.length).toBeGreaterThan(0);
 
     result.forEach((row) => {
       expect(Object.keys(row)).toEqual(properties);
+      expect(row.ra).not.toBeUndefined()
     });
   }, 5000);
 });
