@@ -18,6 +18,8 @@ export class StudentService {
       turma: string;
     }[];
 
+
+
     return students
       .map((student) => {
         return {
@@ -26,6 +28,6 @@ export class StudentService {
           group: student.turma,
         };
       })
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .sort((a, b) => a.name?.localeCompare(b.name));
   }
 }
