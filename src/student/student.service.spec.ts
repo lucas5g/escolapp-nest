@@ -23,7 +23,7 @@ describe('StudentService', () => {
 
     result.forEach((row) => {
       expect(Object.keys(row)).toEqual(properties);
-      expect(row.ra).not.toBeUndefined()
+      expect(row.ra).not.toBeUndefined();
     });
   }, 5000);
 });

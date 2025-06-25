@@ -5,7 +5,7 @@ import { version } from '../package.json';
 
 @Injectable()
 export class AppService {
-  constructor(@Inject(CACHE_MANAGER) private cache: Cache) {}
+  constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache) {}
 
   home() {
     return {
@@ -15,7 +15,7 @@ export class AppService {
   }
 
   async resetCache() {
-    await this.cache.reset();
+    await this.cache.clear();
     return { message: 'Cache resetado' };
   }
 

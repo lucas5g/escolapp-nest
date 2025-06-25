@@ -1,6 +1,5 @@
 import { env } from "@/utils/env"
-import { Modality, Setup, Team, Unity, User } from "@prisma/client"
-import { format } from 'date-fns'
+import { Game, Modality, Setup, Team, Unity, User } from "@prisma/client"
 export const unities: Unity[] = [
   {
     id: 1,
@@ -8,7 +7,7 @@ export const unities: Unity[] = [
     spreedsheetId: 'id planilha',
     createdAt: new Date(),
     updatedAt: new Date(),
-    
+
   },
   {
     id: 2,
@@ -90,10 +89,10 @@ export const teams: Team[] = [
   }
 ]
 
-export const games = [
+export const games: Game[] = [
   {
     id: 1,
-    date: format(new Date(), 'yyyy-MM-dd'),
+    date: new Date(),
     startHours: '08:00',
     endHours: '09:00',
     teams: [
@@ -114,15 +113,16 @@ export const games = [
     modalityId: 1,
     userId: 1,
     unityId: 2,
-
-
+    createdAt: undefined,
+    updatedAt: undefined,
+    comments: ""
   }
 ]
 
-export const setups:Setup[] = [
+export const setups: Setup[] = [
   {
-    id:1,
-    documentLink:'some-id',
-    unityId:2
+    id: 1,
+    documentLink: 'some-id',
+    unityId: 2
   }
 ]

@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Unity {
-  id            Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   name          String
   spreedsheetId String
   createdAt     DateTime? @default(now())
@@ -106,7 +106,7 @@ model Team {
 
 model Game {
   id         Int     @id @default(autoincrement())
-  date       DateTime
+  date       String
   startHours String
   endHours   String
   comments   String?
@@ -116,8 +116,8 @@ model Game {
   userId     Int?
   unityId    Int?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
 
   Place    Place?    @relation(fields: [placeId], references: [id])
   Modality Modality? @relation(fields: [modalityId], references: [id])

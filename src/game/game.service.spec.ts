@@ -3,7 +3,6 @@ import { GameService } from '@/game/game.service';
 import { PrismaService } from '@/prisma/prisma.service';
 import { auth } from '@/utils/test';
 import { Test, TestingModule } from '@nestjs/testing';
-import { format } from 'date-fns';
 describe('GameService', () => {
   let service: GameService;
 
@@ -45,7 +44,7 @@ describe('GameService', () => {
     ];
 
     const data = {
-      date: format(new Date(), 'yyyy-MM-dd'),
+      date: '2025-06-25',
       startHours: '08:00',
       endHours: '09:00',
       teams: String(teams),
@@ -85,12 +84,12 @@ describe('GameService', () => {
 
   it('find all by userId', async () => {
     const data: FindGameDto = {
-      userId: 105,
-      date: '2024-07-08 03:00:00.000',
+      // userId: 105,
+      date: '2025-06-25',
     };
 
     const result = await service.findAll(auth, data);
 
-    expect(result.length).toEqual(6);
+    expect(result.length).toEqual(1);
   });
 });

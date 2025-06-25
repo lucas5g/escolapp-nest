@@ -3,7 +3,7 @@ import { IsDateString, IsOptional } from 'class-validator';
 export class FindGameDto {
   @IsOptional()
   @Type(() => Number)
-  userId: number;
+  userId?: number;
 
   @IsOptional()
   @IsDateString()

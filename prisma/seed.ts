@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 
 async function main() {
 
-  unities.forEach(async(unity) => {
+  unities.forEach(async (unity) => {
     await prisma.unity.upsert({
       where: { id: unity.id },
       create: unity,
@@ -22,7 +22,7 @@ async function main() {
       update: modality
     })
   })
-   
+
   teams.forEach(async (team) => {
     await prisma.team.upsert({
       where: { id: team.id },
@@ -52,16 +52,16 @@ async function main() {
   await setTimeout(5000)
   games.forEach(async game => {
     await prisma.game.upsert({
-      where:{id: game.id},
-      create:game,
-      update:game
+      where: { id: game.id },
+      create: game,
+      update: game
     })
   })
 
-  for(const setup of setups){
+  for (const setup of setups) {
     await prisma.setup.upsert({
-      where:{id: setup.id},
-      update: setup, 
+      where: { id: setup.id },
+      update: setup,
       create: setup
     })
   }

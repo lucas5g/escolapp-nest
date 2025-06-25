@@ -2,11 +2,10 @@ import { AuthEntity } from '@/auth/entities/auth.entity';
 import { UnityService } from '@/unity/unity.service';
 import { googleSheets } from '@/utils/google-sheets';
 import { Injectable } from '@nestjs/common';
-import { Student } from './entities/student.entity';
 
 @Injectable()
 export class StudentService {
-  constructor(private unityService: UnityService) {}
+  constructor(private readonly unityService: UnityService) {}
   async findAll(auth: AuthEntity) {
     const unity = await this.unityService.findOne(auth.unityId);
 
@@ -19,8 +18,6 @@ export class StudentService {
       turma: string;
     }[];
 
-
-
     return students
       .map((student) => {
         return {
@@ -29,7 +26,7 @@ export class StudentService {
           group: student.turma,
         };
       })
-      .filter(student => student.ra !== undefined)
+      .filter((student) => student.ra !== undefined)
       .sort((a, b) => a.name?.localeCompare(b.name));
   }
 }

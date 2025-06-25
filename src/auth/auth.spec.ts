@@ -6,7 +6,8 @@ import { UserService } from '@/user/user.service';
 import { PrismaService } from '@/prisma/prisma.service';
 import { auth } from '@/utils/test';
 import { randomInt } from 'crypto';
-import { request } from '@/utils/request';
+import request from 'supertest';
+// import { request } from '@/utils/request';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -46,27 +47,22 @@ describe('AuthService', () => {
 });
 
 describe('Auth (e2e)', () => {
+  const url = 'http://localhost:8000';
   it('/auth/me (PATCH)', async () => {
-    const { data: login } = await request({
-      method: 'post',
-      data: {
-        email: 'admin@mail.com',
-        password: 'qweqwe',
-      },
-      url: 'auth/login',
+    const { body } = await request(url).post('/auth/login').send({
+      email: 'admin@mail.com',
+      password: 'qweqwe',
     });
 
-    const unityId = randomInt(2);
-    const { data } = await request({
-      data: {
+    const unityId = randomInt(3) || 1;
+    const { body: body2 } = await request(url)
+      .patch('/auth/me')
+      .set('Authorization', `Bearer ${body.accessToken}`)
+      .send({
         unityId,
-      },
-      method: 'patch',
-      url: 'auth/me',
-      token: login.accessToken,
-    });
+      });
 
-    const decoded = jwtDecode(data.accessToken);
+    const decoded = jwtDecode(body2.accessToken);
 
     expect(decoded).toMatchObject({ unityId });
   });
