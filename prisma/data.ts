@@ -92,7 +92,7 @@ export const teams: Team[] = [
 export const games: Game[] = [
   {
     id: 1,
-    date: new Date(),
+    date: '2025-06-25',
     startHours: '08:00',
     endHours: '09:00',
     teams: [
