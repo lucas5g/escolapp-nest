@@ -9,7 +9,7 @@ COPY . .
 # ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=1
 
 # Install app dependencies
-RUN npm install
+RUN npm ci
 
 # Copy the rest of the app source
 # COPY . .
