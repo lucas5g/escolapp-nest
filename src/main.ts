@@ -32,6 +32,6 @@ async function bootstrap() {
   const port = 8000;
   await app.listen(port);
 
-  Logger.log(`Server Run http://localhost:${port}`);
+  Logger.log(`Server Run http://localhost:${port} - ${version}`);
 }
 bootstrap();
