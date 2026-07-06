@@ -15,15 +15,17 @@ export class GameService {
     });
   }
 
-  findAll({ unityId }: AuthEntity, findGameDto?: FindGameDto) {
+  findAll({ unityId }: AuthEntity, findGameDto: FindGameDto = {}) {
+    const { page = 1, limit = 20, ...where } = findGameDto;
+
     return this.prisma.game.findMany({
       where: {
         unityId,
-        ...findGameDto,
+        ...where,
       },
-      orderBy: {
-        date: 'asc',
-      },
+      orderBy: [{ date: 'asc' }, { id: 'asc' }],
+      skip: (page - 1) * limit,
+      take: limit,
     });
   }
 
