@@ -1,43 +1,25 @@
 #!/bin/bash
 source .env
 
-if [[ $@ =~ "push" ]]; then 
 
-  npm run lint 
+npm run lint 
 
-  if [ "$?" != 0 ]; then 
-    echo "Erro no lint"
-    exit 
-  fi
-
-  npm run test
-
-  if [ "$?" != 0 ]; then 
-    echo "Erro nos tests"
-    exit 
-  fi
-
-  git add .
-  git commit -m "$2"
-  git push 
-
+if [ "$?" != 0 ]; then 
+  echo "Erro no lint"
   exit 
 fi
 
+npm run test
 
-
-if [[ $@ =~ "dist" ]]; then 
-  npm run build
+if [ "$?" != 0 ]; then 
+  echo "Erro nos tests"
+  exit 
 fi
 
-zip -r build.zip $@
+git add .
+git commit -m "$2"
+git push 
 
-sshpass -p $PASSWORD scp build.zip root@128.199.12.79:projects/escolapp 
-sshpass -p $PASSWORD ssh -t root@128.199.12.79 "\
-  cd projects/escolapp &&\
-  unzip -o build.zip &&\
-  cat .env.prod > .env &&\
-  source ~/.nvm/nvm.sh &&\
-  pm2 restart escolapp --update-env
-"
+exit 
+
 

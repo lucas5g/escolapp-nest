@@ -1,9 +1,11 @@
 import { Type } from 'class-transformer';
 import {
   IsArray,
+  IsDateString,
   IsInt,
   IsNotEmpty,
   IsOptional,
+  Matches,
   ValidateNested,
 } from 'class-validator';
 
@@ -23,6 +25,10 @@ class TeamDto {
 
 export class CreateGameDto {
   @IsNotEmpty()
+  @Matches(/^\d{4}-\d{2}-\d{2}(T.*)?$/, {
+    message: 'Data deve ter ano com 4 dígitos',
+  })
+  @IsDateString({}, { message: 'Data deve ser uma data ISO-8601 válida' })
   date: string;
 
   @IsNotEmpty()
