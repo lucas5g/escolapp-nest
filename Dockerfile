@@ -1,26 +1,27 @@
-# Base image
-FROM node:24
+FROM node:24-slim AS build
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
-COPY . .
-# ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=1
-
-# Install app dependencies
+COPY package*.json ./
+COPY prisma ./prisma
 RUN npm ci
 
-# Copy the rest of the app source
-# COPY . .
-
-# Build the app
-# RUN npx prisma generate
+COPY tsconfig*.json nest-cli.json ./
+COPY src ./src
 RUN npm run build
+RUN npm prune --omit=dev
 
+FROM node:24-slim AS runtime
 
-# Expose port
+WORKDIR /usr/src/app
+
+ENV NODE_ENV=production
+
+COPY --from=build /usr/src/app/package*.json ./
+COPY --from=build /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/prisma ./prisma
+
 EXPOSE 8000
 
-# Start the server
-CMD [ "npm", "run", "start" ]
+CMD ["npm", "run", "start"]
