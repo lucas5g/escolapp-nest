@@ -11,6 +11,7 @@ RUN npm ci --no-audit --no-fund
 COPY tsconfig*.json nest-cli.json ./
 COPY src ./src
 RUN npm run build
+RUN npm prune --omit=dev --no-audit --no-fund
 
 FROM node:24-slim AS runtime
 
